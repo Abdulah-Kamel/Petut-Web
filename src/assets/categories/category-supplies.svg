@@ -1,0 +1,46 @@
+<svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#F3F4F6"/>
+  
+  <!-- Category background -->
+  <rect x="50" y="50" width="500" height="300" rx="20" fill="#E0F2FE"/>
+  
+  <!-- Pet bowl -->
+  <ellipse cx="150" cy="150" rx="50" ry="20" fill="#0EA5E9"/>
+  <path d="M100 150C100 150 100 180 150 180C200 180 200 150 200 150" stroke="#0EA5E9" stroke-width="8" stroke-linecap="round"/>
+  <ellipse cx="150" cy="150" rx="40" ry="15" fill="#7DD3FC"/>
+  
+  <!-- Pet collar -->
+  <path d="M300 120C300 120 250 140 250 170C250 200 300 220 300 220" stroke="#F43F5E" stroke-width="12" stroke-linecap="round"/>
+  <path d="M300 120C300 120 350 140 350 170C350 200 300 220 300 220" stroke="#F43F5E" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="300" cy="170" r="10" fill="#FDE68A"/>
+  
+  <!-- Pet brush -->
+  <rect x="400" y="120" width="60" height="20" rx="5" fill="#A78BFA"/>
+  <path d="M400 130H380" stroke="#A78BFA" stroke-width="8" stroke-linecap="round"/>
+  
+  <path d="M410 140V150" stroke="#A78BFA" stroke-width="4" stroke-linecap="round"/>
+  <path d="M420 140V155" stroke="#A78BFA" stroke-width="4" stroke-linecap="round"/>
+  <path d="M430 140V160" stroke="#A78BFA" stroke-width="4" stroke-linecap="round"/>
+  <path d="M440 140V155" stroke="#A78BFA" stroke-width="4" stroke-linecap="round"/>
+  <path d="M450 140V150" stroke="#A78BFA" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Pet toy -->
+  <circle cx="150" cy="250" r="30" fill="#34D399"/>
+  <path d="M150 220V280" stroke="#059669" stroke-width="4" stroke-linecap="round"/>
+  <path d="M120 250H180" stroke="#059669" stroke-width="4" stroke-linecap="round"/>
+  <path d="M130 230L170 270" stroke="#059669" stroke-width="4" stroke-linecap="round"/>
+  <path d="M130 270L170 230" stroke="#059669" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Pet bed -->
+  <ellipse cx="300" cy="280" rx="60" ry="30" fill="#60A5FA"/>
+  <ellipse cx="300" cy="280" rx="50" ry="20" fill="#93C5FD"/>
+  <path d="M270 270C270 270 280 260 300 260C320 260 330 270 330 270" stroke="#2563EB" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Pet leash -->
+  <path d="M450 250C450 250 470 230 450 210C430 190 410 210 410 210" stroke="#F97316" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="450" cy="250" r="10" fill="#F97316"/>
+  
+  <!-- Category name -->
+  <rect x="200" y="340" width="200" height="40" rx="10" fill="#0EA5E9"/>
+  <path d="M250 360H350" stroke="white" stroke-width="6" stroke-linecap="round"/>
+</svg>

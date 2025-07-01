@@ -1,0 +1,81 @@
+<svg width="1200" height="300" viewBox="0 0 1200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="300" fill="#F3F4F6"/>
+  
+  <!-- Banner background with gradient -->
+  <rect x="0" y="0" width="1200" height="300" fill="url(#paint0_linear)"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="120" cy="60" r="30" fill="#E0F2FE" fill-opacity="0.7"/>
+  <circle cx="1080" cy="240" r="40" fill="#FEF3C7" fill-opacity="0.7"/>
+  <circle cx="920" cy="80" r="25" fill="#FCE7F3" fill-opacity="0.7"/>
+  <circle cx="220" cy="240" r="35" fill="#DCFCE7" fill-opacity="0.7"/>
+  
+  <!-- Service icons -->
+  <!-- Grooming service -->
+  <circle cx="200" cy="150" r="70" fill="#0EA5E9" fill-opacity="0.9"/>
+  <rect x="170" cy="130" width="60" height="20" rx="5" fill="white"/>
+  <path d="M170 140H150" stroke="white" stroke-width="8" stroke-linecap="round"/>
+  
+  <path d="M180 150V170" stroke="white" stroke-width="4" stroke-linecap="round"/>
+  <path d="M190 150V175" stroke="white" stroke-width="4" stroke-linecap="round"/>
+  <path d="M200 150V180" stroke="white" stroke-width="4" stroke-linecap="round"/>
+  <path d="M210 150V175" stroke="white" stroke-width="4" stroke-linecap="round"/>
+  <path d="M220 150V170" stroke="white" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Veterinary service -->
+  <circle cx="400" cy="150" r="70" fill="#22C55E" fill-opacity="0.9"/>
+  <rect x="370" y="120" width="60" height="60" rx="10" fill="white"/>
+  <rect x="390" y="100" width="20" height="100" rx="10" fill="white"/>
+  
+  <!-- Pet boarding service -->
+  <circle cx="600" cy="150" r="70" fill="#F59E0B" fill-opacity="0.9"/>
+  <rect x="560" y="130" width="80" height="60" rx="10" fill="white"/>
+  <path d="M560 130L600 110L640 130" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="580" y="150" width="40" height="40" rx="5" fill="#F59E0B"/>
+  
+  <!-- Pet training service -->
+  <circle cx="800" cy="150" r="70" fill="#8B5CF6" fill-opacity="0.9"/>
+  <circle cx="800" cy="150" r="40" fill="white"/>
+  <path d="M780 150L820 150" stroke="#8B5CF6" stroke-width="6" stroke-linecap="round"/>
+  <path d="M800 130L800 170" stroke="#8B5CF6" stroke-width="6" stroke-linecap="round"/>
+  <path d="M775 125L825 175" stroke="#8B5CF6" stroke-width="6" stroke-linecap="round"/>
+  <path d="M775 175L825 125" stroke="#8B5CF6" stroke-width="6" stroke-linecap="round"/>
+  
+  <!-- Pet daycare service -->
+  <circle cx="1000" cy="150" r="70" fill="#EC4899" fill-opacity="0.9"/>
+  <circle cx="980" cy="140" r="15" fill="white"/>
+  <circle cx="1020" cy="140" r="15" fill="white"/>
+  <path d="M970 170C970 170 985 190 1000 190C1015 190 1030 170 1030 170" stroke="white" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- Banner text -->
+  <rect x="400" y="50" width="400" height="50" rx="10" fill="#FFFFFF" fill-opacity="0.9"/>
+  <path d="M450 75H750" stroke="#3B82F6" stroke-width="6" stroke-linecap="round"/>
+  
+  <rect x="450" y="230" width="300" height="40" rx="20" fill="#3B82F6" fill-opacity="0.9"/>
+  <path d="M500 250H700" stroke="white" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Service labels -->
+  <rect x="170" y="240" width="60" height="20" rx="5" fill="#0EA5E9" fill-opacity="0.9"/>
+  <path d="M180 250H220" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  
+  <rect x="370" y="240" width="60" height="20" rx="5" fill="#22C55E" fill-opacity="0.9"/>
+  <path d="M380 250H420" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  
+  <rect x="570" y="240" width="60" height="20" rx="5" fill="#F59E0B" fill-opacity="0.9"/>
+  <path d="M580 250H620" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  
+  <rect x="770" y="240" width="60" height="20" rx="5" fill="#8B5CF6" fill-opacity="0.9"/>
+  <path d="M780 250H820" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  
+  <rect x="970" y="240" width="60" height="20" rx="5" fill="#EC4899" fill-opacity="0.9"/>
+  <path d="M980 250H1020" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Gradient definition -->
+  <defs>
+    <linearGradient id="paint0_linear" x1="0" y1="0" x2="1200" y2="300" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EFF6FF"/>
+      <stop offset="0.5" stop-color="#F8FAFC"/>
+      <stop offset="1" stop-color="#F0F9FF"/>
+    </linearGradient>
+  </defs>
+</svg>

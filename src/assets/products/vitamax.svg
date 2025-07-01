@@ -1,0 +1,36 @@
+<svg width="800" height="800" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="800" fill="#F3F4F6"/>
+  
+  <!-- Product bottle -->
+  <path d="M350 250H450V350C450 350 500 370 500 450V650H300V450C300 370 350 350 350 350V250Z" fill="#FDE68A"/>
+  <path d="M350 250H450V350C450 350 500 370 500 450V650H300V450C300 370 350 350 350 350V250Z" stroke="#F59E0B" stroke-width="8"/>
+  
+  <!-- Bottle cap -->
+  <rect x="350" y="200" width="100" height="50" rx="10" fill="#F59E0B"/>
+  
+  <!-- Label -->
+  <rect x="320" y="400" width="160" height="200" rx="10" fill="white" stroke="#F59E0B" stroke-width="4"/>
+  
+  <!-- Brand name -->
+  <rect x="340" y="420" width="120" height="30" rx="5" fill="#FBBF24"/>
+  
+  <!-- Product name -->
+  <rect x="340" y="460" width="120" height="20" rx="5" fill="#FCD34D"/>
+  
+  <!-- Product details -->
+  <rect x="340" y="490" width="120" height="10" rx="5" fill="#FDE68A"/>
+  <rect x="340" y="510" width="100" height="10" rx="5" fill="#FDE68A"/>
+  <rect x="340" y="530" width="110" height="10" rx="5" fill="#FDE68A"/>
+  
+  <!-- Vitamin icons -->
+  <circle cx="360" cy="560" r="15" fill="#FBBF24"/>
+  <path d="M360 550V570" stroke="white" stroke-width="3" stroke-linecap="round"/>
+  <path d="M350 560H370" stroke="white" stroke-width="3" stroke-linecap="round"/>
+  
+  <circle cx="400" cy="560" r="15" fill="#FBBF24"/>
+  <path d="M400 550L400 570" stroke="white" stroke-width="3" stroke-linecap="round"/>
+  
+  <circle cx="440" cy="560" r="15" fill="#FBBF24"/>
+  <path d="M435 555L445 565" stroke="white" stroke-width="3" stroke-linecap="round"/>
+  <path d="M445 555L435 565" stroke="white" stroke-width="3" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,77 @@
+<svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#F3F4F6"/>
+  
+  <!-- Category background -->
+  <rect x="50" y="50" width="500" height="300" rx="20" fill="#D1FAE5"/>
+  
+  <!-- Hamster -->
+  <circle cx="200" cy="150" r="40" fill="#F59E0B"/>
+  
+  <!-- Hamster ears -->
+  <circle cx="175" cy="120" r="15" fill="#F59E0B"/>
+  <circle cx="225" cy="120" r="15" fill="#F59E0B"/>
+  
+  <!-- Hamster face -->
+  <circle cx="190" cy="140" r="5" fill="#7C2D12"/>
+  <circle cx="210" cy="140" r="5" fill="#7C2D12"/>
+  
+  <path d="M195 155C195 155 200 160 205 155" stroke="#7C2D12" stroke-width="3" stroke-linecap="round"/>
+  
+  <path d="M200 145V150" stroke="#7C2D12" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Hamster cheeks -->
+  <circle cx="175" cy="155" r="10" fill="#FDBA74"/>
+  <circle cx="225" cy="155" r="10" fill="#FDBA74"/>
+  
+  <!-- Hamster body -->
+  <ellipse cx="200" cy="200" rx="30" ry="20" fill="#F59E0B"/>
+  
+  <!-- Hamster feet -->
+  <circle cx="185" cy="215" r="8" fill="#FDBA74"/>
+  <circle cx="215" cy="215" r="8" fill="#FDBA74"/>
+  
+  <!-- Rabbit -->
+  <ellipse cx="400" cy="180" rx="35" ry="25" fill="#E5E7EB"/>
+  
+  <!-- Rabbit head -->
+  <circle cx="400" cy="140" r="30" fill="#E5E7EB"/>
+  
+  <!-- Rabbit ears -->
+  <path d="M380 120L370 80" stroke="#E5E7EB" stroke-width="12" stroke-linecap="round"/>
+  <path d="M420 120L430 80" stroke="#E5E7EB" stroke-width="12" stroke-linecap="round"/>
+  
+  <!-- Rabbit face -->
+  <circle cx="390" cy="135" r="5" fill="#4B5563"/>
+  <circle cx="410" cy="135" r="5" fill="#4B5563"/>
+  
+  <path d="M395 150C395 150 400 155 405 150" stroke="#4B5563" stroke-width="3" stroke-linecap="round"/>
+  
+  <path d="M400 140V145" stroke="#4B5563" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Rabbit feet -->
+  <ellipse cx="385" cy="200" rx="10" ry="5" fill="#D1D5DB"/>
+  <ellipse cx="415" cy="200" rx="10" ry="5" fill="#D1D5DB"/>
+  
+  <!-- Rabbit tail -->
+  <circle cx="435" cy="180" r="10" fill="white"/>
+  
+  <!-- Guinea pig -->
+  <ellipse cx="300" cy="250" rx="40" ry="25" fill="#A78BFA"/>
+  
+  <!-- Guinea pig head -->
+  <circle cx="260" cy="250" r="20" fill="#A78BFA"/>
+  
+  <!-- Guinea pig face -->
+  <circle cx="250" cy="245" r="4" fill="#4C1D95"/>
+  <circle cx="250" cy="255" r="4" fill="#4C1D95"/>
+  
+  <path d="M240 250H245" stroke="#4C1D95" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Guinea pig feet -->
+  <ellipse cx="280" cy="270" rx="8" ry="4" fill="#C4B5FD"/>
+  <ellipse cx="320" cy="270" rx="8" ry="4" fill="#C4B5FD"/>
+  
+  <!-- Category name -->
+  <rect x="200" y="340" width="200" height="40" rx="10" fill="#10B981"/>
+  <path d="M250 360H350" stroke="white" stroke-width="6" stroke-linecap="round"/>
+</svg>

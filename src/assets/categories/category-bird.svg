@@ -1,0 +1,64 @@
+<svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#F3F4F6"/>
+  
+  <!-- Category background -->
+  <rect x="50" y="50" width="500" height="300" rx="20" fill="#FEE2E2"/>
+  
+  <!-- Sky background -->
+  <path d="M100 100C100 100 150 80 200 100C250 120 300 80 350 100C400 120 450 80 500 100" stroke="#FECACA" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- Clouds -->
+  <circle cx="150" cy="120" r="20" fill="white" fill-opacity="0.6"/>
+  <circle cx="170" cy="110" r="15" fill="white" fill-opacity="0.6"/>
+  <circle cx="130" cy="110" r="15" fill="white" fill-opacity="0.6"/>
+  
+  <circle cx="450" cy="130" r="25" fill="white" fill-opacity="0.6"/>
+  <circle cx="470" cy="120" r="20" fill="white" fill-opacity="0.6"/>
+  <circle cx="430" cy="120" r="20" fill="white" fill-opacity="0.6"/>
+  
+  <!-- Bird 1 -->
+  <path d="M250 150C250 150 270 130 290 150" stroke="#EF4444" stroke-width="6" stroke-linecap="round"/>
+  <path d="M290 150C290 150 310 130 330 150" stroke="#EF4444" stroke-width="6" stroke-linecap="round"/>
+  
+  <circle cx="300" cy="180" r="30" fill="#EF4444"/>
+  
+  <path d="M290 170L280 160" stroke="white" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="290" cy="170" r="3" fill="black"/>
+  
+  <path d="M320 180L340 180" stroke="#B91C1C" stroke-width="6" stroke-linecap="round"/>
+  
+  <path d="M300 210L290 240" stroke="#EF4444" stroke-width="6" stroke-linecap="round"/>
+  <path d="M300 210L310 240" stroke="#EF4444" stroke-width="6" stroke-linecap="round"/>
+  
+  <!-- Bird 2 -->
+  <path d="M150 200C150 200 160 190 170 200" stroke="#F87171" stroke-width="4" stroke-linecap="round"/>
+  <path d="M170 200C170 200 180 190 190 200" stroke="#F87171" stroke-width="4" stroke-linecap="round"/>
+  
+  <circle cx="170" cy="215" r="15" fill="#F87171"/>
+  
+  <path d="M165 210L160 205" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="165" cy="210" r="2" fill="black"/>
+  
+  <path d="M180 215L190 215" stroke="#B91C1C" stroke-width="4" stroke-linecap="round"/>
+  
+  <path d="M170 230L165 245" stroke="#F87171" stroke-width="4" stroke-linecap="round"/>
+  <path d="M170 230L175 245" stroke="#F87171" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Bird 3 -->
+  <path d="M400 220C400 220 410 210 420 220" stroke="#FCA5A5" stroke-width="4" stroke-linecap="round"/>
+  <path d="M420 220C420 220 430 210 440 220" stroke="#FCA5A5" stroke-width="4" stroke-linecap="round"/>
+  
+  <circle cx="420" cy="235" r="15" fill="#FCA5A5"/>
+  
+  <path d="M415 230L410 225" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="415" cy="230" r="2" fill="black"/>
+  
+  <path d="M430 235L440 235" stroke="#B91C1C" stroke-width="4" stroke-linecap="round"/>
+  
+  <path d="M420 250L415 265" stroke="#FCA5A5" stroke-width="4" stroke-linecap="round"/>
+  <path d="M420 250L425 265" stroke="#FCA5A5" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Category name -->
+  <rect x="200" y="340" width="200" height="40" rx="10" fill="#EF4444"/>
+  <path d="M250 360H350" stroke="white" stroke-width="6" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,68 @@
+<svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#F3F4F6"/>
+  
+  <!-- Category background -->
+  <rect x="50" y="50" width="500" height="300" rx="20" fill="#DCFCE7"/>
+  
+  <!-- Medical cross symbol -->
+  <rect x="150" y="120" width="100" height="100" rx="10" fill="#22C55E"/>
+  <rect x="180" y="90" width="40" height="160" rx="10" fill="#22C55E"/>
+  
+  <!-- Pet vitamins bottle -->
+  <rect x="300" y="130" width="50" height="80" rx="5" fill="#0EA5E9"/>
+  <rect x="310" y="120" width="30" height="10" rx="2" fill="#0EA5E9"/>
+  <rect x="310" y="130" width="30" height="20" rx="2" fill="#7DD3FC"/>
+  
+  <path d="M315 140H335" stroke="#0369A1" stroke-width="2" stroke-linecap="round"/>
+  <path d="M315 145H335" stroke="#0369A1" stroke-width="2" stroke-linecap="round"/>
+  
+  <path d="M315 160H335" stroke="#7DD3FC" stroke-width="2" stroke-linecap="round"/>
+  <path d="M315 165H335" stroke="#7DD3FC" stroke-width="2" stroke-linecap="round"/>
+  <path d="M315 170H335" stroke="#7DD3FC" stroke-width="2" stroke-linecap="round"/>
+  <path d="M315 175H335" stroke="#7DD3FC" stroke-width="2" stroke-linecap="round"/>
+  <path d="M315 180H335" stroke="#7DD3FC" stroke-width="2" stroke-linecap="round"/>
+  <path d="M315 185H335" stroke="#7DD3FC" stroke-width="2" stroke-linecap="round"/>
+  <path d="M315 190H335" stroke="#7DD3FC" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Stethoscope -->
+  <circle cx="400" cy="120" r="15" fill="#F43F5E"/>
+  <circle cx="430" cy="120" r="15" fill="#F43F5E"/>
+  <path d="M400 135C400 135 400 180 430 180C460 180 460 220 460 220" stroke="#F43F5E" stroke-width="8" stroke-linecap="round"/>
+  <path d="M430 135C430 135 430 150 430 150" stroke="#F43F5E" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- Paw with bandage -->
+  <circle cx="150" cy="280" r="15" fill="#FCA5A5"/>
+  <circle cx="180" cy="280" r="15" fill="#FCA5A5"/>
+  <circle cx="165" cy="250" r="15" fill="#FCA5A5"/>
+  <path d="M150 295C150 295 165 310 180 295" stroke="#FCA5A5" stroke-width="10" stroke-linecap="round"/>
+  
+  <path d="M140 270L190 290" stroke="white" stroke-width="8" stroke-linecap="round"/>
+  <path d="M140 290L190 270" stroke="white" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- Pet toothbrush and toothpaste -->
+  <rect x="250" y="250" width="10" height="60" rx="2" fill="#60A5FA"/>
+  <path d="M250 250C250 250 240 240 250 230C260 220 270 230 270 230" stroke="#60A5FA" stroke-width="6" stroke-linecap="round"/>
+  
+  <path d="M260 250L270 250" stroke="#93C5FD" stroke-width="2" stroke-linecap="round"/>
+  <path d="M260 255L270 255" stroke="#93C5FD" stroke-width="2" stroke-linecap="round"/>
+  <path d="M260 260L270 260" stroke="#93C5FD" stroke-width="2" stroke-linecap="round"/>
+  
+  <rect x="290" y="260" width="30" height="15" rx="2" fill="#F87171"/>
+  <rect x="300" y="250" width="10" height="10" rx="2" fill="#F87171"/>
+  <path d="M300 260H310" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Flea and tick collar -->
+  <path d="M350 250C350 250 330 260 330 275C330 290 350 300 350 300" stroke="#A78BFA" stroke-width="8" stroke-linecap="round"/>
+  <path d="M350 250C350 250 370 260 370 275C370 290 350 300 350 300" stroke="#A78BFA" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="350" cy="275" r="5" fill="#C4B5FD"/>
+  
+  <!-- Pet scale -->
+  <rect x="400" y="250" width="80" height="10" rx="2" fill="#9CA3AF"/>
+  <rect x="420" y="260" width="40" height="20" rx="2" fill="#D1D5DB"/>
+  <path d="M430 270H450" stroke="#6B7280" stroke-width="2" stroke-linecap="round"/>
+  <path d="M440 265V275" stroke="#6B7280" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Category name -->
+  <rect x="200" y="340" width="200" height="40" rx="10" fill="#22C55E"/>
+  <path d="M250 360H350" stroke="white" stroke-width="6" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,73 @@
+<svg width="1200" height="300" viewBox="0 0 1200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="300" fill="#F3F4F6"/>
+  
+  <!-- Banner background with gradient -->
+  <rect x="0" y="0" width="1200" height="300" fill="url(#paint0_linear)"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="150" cy="50" r="30" fill="#FEF3C7" fill-opacity="0.7"/>
+  <circle cx="1050" cy="250" r="40" fill="#DBEAFE" fill-opacity="0.7"/>
+  <circle cx="950" cy="70" r="25" fill="#D1FAE5" fill-opacity="0.7"/>
+  <circle cx="250" cy="230" r="35" fill="#FEE2E2" fill-opacity="0.7"/>
+  
+  <!-- Sale badge -->
+  <circle cx="200" cy="150" r="80" fill="#EF4444" fill-opacity="0.9"/>
+  <circle cx="200" cy="150" r="70" fill="#FEF2F2" fill-opacity="0.9"/>
+  <circle cx="200" cy="150" r="60" fill="#EF4444" fill-opacity="0.9"/>
+  
+  <path d="M170 130L230 170" stroke="white" stroke-width="6" stroke-linecap="round"/>
+  <path d="M170 170L230 130" stroke="white" stroke-width="6" stroke-linecap="round"/>
+  
+  <!-- Product images -->
+  <!-- Dog food -->
+  <rect x="350" y="100" width="100" height="120" rx="10" fill="#F59E0B" fill-opacity="0.9"/>
+  <rect x="360" y="110" width="80" height="100" rx="5" fill="#FEF3C7"/>
+  <path d="M380 130H420" stroke="#92400E" stroke-width="3" stroke-linecap="round"/>
+  <path d="M380 150H420" stroke="#92400E" stroke-width="3" stroke-linecap="round"/>
+  <path d="M380 170H420" stroke="#92400E" stroke-width="3" stroke-linecap="round"/>
+  <path d="M380 190H420" stroke="#92400E" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Cat toy -->
+  <circle cx="550" cy="150" r="50" fill="#6366F1" fill-opacity="0.9"/>
+  <path d="M520 150L580 150" stroke="white" stroke-width="4" stroke-linecap="round"/>
+  <path d="M550 120L550 180" stroke="white" stroke-width="4" stroke-linecap="round"/>
+  <path d="M530 130L570 170" stroke="white" stroke-width="4" stroke-linecap="round"/>
+  <path d="M530 170L570 130" stroke="white" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Pet bed -->
+  <ellipse cx="700" cy="170" rx="60" ry="30" fill="#10B981" fill-opacity="0.9"/>
+  <ellipse cx="700" cy="170" rx="50" ry="20" fill="#D1FAE5"/>
+  <path d="M670 160C670 160 680 150 700 150C720 150 730 160 730 160" stroke="#059669" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Pet grooming kit -->
+  <rect x="800" y="100" width="80" height="100" rx="10" fill="#8B5CF6" fill-opacity="0.9"/>
+  <rect x="810" y="110" width="60" height="80" rx="5" fill="#EDE9FE"/>
+  
+  <path d="M820 130L860 130" stroke="#5B21B6" stroke-width="2" stroke-linecap="round"/>
+  <path d="M820 140L860 140" stroke="#5B21B6" stroke-width="2" stroke-linecap="round"/>
+  <path d="M820 150L860 150" stroke="#5B21B6" stroke-width="2" stroke-linecap="round"/>
+  
+  <path d="M830 170L840 170" stroke="#5B21B6" stroke-width="6" stroke-linecap="round"/>
+  <path d="M850 170L860 170" stroke="#5B21B6" stroke-width="6" stroke-linecap="round"/>
+  
+  <!-- Pet collar -->
+  <path d="M950 120C950 120 920 130 920 150C920 170 950 180 950 180" stroke="#F43F5E" stroke-width="10" stroke-linecap="round" stroke-opacity="0.9"/>
+  <path d="M950 120C950 120 980 130 980 150C980 170 950 180 950 180" stroke="#F43F5E" stroke-width="10" stroke-linecap="round" stroke-opacity="0.9"/>
+  <circle cx="950" cy="150" r="8" fill="#FDE68A"/>
+  
+  <!-- Promo text -->
+  <rect x="400" y="50" width="400" height="50" rx="10" fill="#FFFFFF" fill-opacity="0.9"/>
+  <path d="M450 75H750" stroke="#3B82F6" stroke-width="6" stroke-linecap="round"/>
+  
+  <rect x="450" y="230" width="300" height="40" rx="20" fill="#EF4444" fill-opacity="0.9"/>
+  <path d="M500 250H700" stroke="white" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Gradient definition -->
+  <defs>
+    <linearGradient id="paint0_linear" x1="0" y1="0" x2="1200" y2="300" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FEE2E2"/>
+      <stop offset="0.5" stop-color="#FEF2F2"/>
+      <stop offset="1" stop-color="#EFF6FF"/>
+    </linearGradient>
+  </defs>
+</svg>

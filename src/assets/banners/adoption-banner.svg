@@ -1,0 +1,116 @@
+<svg width="1200" height="300" viewBox="0 0 1200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="300" fill="#F3F4F6"/>
+  
+  <!-- Banner background with gradient -->
+  <rect x="0" y="0" width="1200" height="300" fill="url(#paint0_linear)"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="100" cy="50" r="30" fill="#FEE2E2" fill-opacity="0.7"/>
+  <circle cx="1100" cy="250" r="40" fill="#DBEAFE" fill-opacity="0.7"/>
+  <circle cx="950" cy="70" r="25" fill="#DCFCE7" fill-opacity="0.7"/>
+  <circle cx="250" cy="250" r="35" fill="#FEF3C7" fill-opacity="0.7"/>
+  
+  <!-- Heart icon -->
+  <path d="M200 120C200 120 170 120 170 150C170 180 200 210 200 210C200 210 230 180 230 150C230 120 200 120 200 120Z" fill="#F43F5E" fill-opacity="0.9"/>
+  
+  <!-- Pet silhouettes -->
+  <!-- Dog silhouette -->
+  <ellipse cx="400" cy="170" rx="50" ry="40" fill="#F59E0B" fill-opacity="0.8"/>
+  <circle cx="350" cy="170" r="30" fill="#F59E0B" fill-opacity="0.8"/>
+  
+  <path d="M330 150L320 120" stroke="#F59E0B" stroke-width="8" stroke-linecap="round" stroke-opacity="0.8"/>
+  <path d="M370 150L380 120" stroke="#F59E0B" stroke-width="8" stroke-linecap="round" stroke-opacity="0.8"/>
+  
+  <circle cx="340" cy="160" r="5" fill="#92400E"/>
+  <circle cx="360" cy="160" r="5" fill="#92400E"/>
+  
+  <path d="M345 175C345 175 350 180 355 175" stroke="#92400E" stroke-width="2" stroke-linecap="round"/>
+  
+  <path d="M400 210L390 250" stroke="#F59E0B" stroke-width="8" stroke-linecap="round" stroke-opacity="0.8"/>
+  <path d="M400 210L410 250" stroke="#F59E0B" stroke-width="8" stroke-linecap="round" stroke-opacity="0.8"/>
+  
+  <!-- Cat silhouette -->
+  <ellipse cx="600" cy="170" rx="40" ry="30" fill="#6366F1" fill-opacity="0.8"/>
+  <circle cx="560" cy="170" r="25" fill="#6366F1" fill-opacity="0.8"/>
+  
+  <path d="M545 150L535 120" stroke="#6366F1" stroke-width="6" stroke-linecap="round" stroke-opacity="0.8"/>
+  <path d="M575 150L585 120" stroke="#6366F1" stroke-width="6" stroke-linecap="round" stroke-opacity="0.8"/>
+  
+  <circle cx="550" cy="160" r="4" fill="#312E81"/>
+  <circle cx="570" cy="160" r="4" fill="#312E81"/>
+  
+  <path d="M555 170C555 170 560 175 565 170" stroke="#312E81" stroke-width="2" stroke-linecap="round"/>
+  
+  <path d="M600 200C600 200 620 220 640 200" stroke="#6366F1" stroke-width="6" stroke-linecap="round" stroke-opacity="0.8"/>
+  
+  <!-- Rabbit silhouette -->
+  <ellipse cx="800" cy="180" rx="35" ry="25" fill="#E5E7EB" fill-opacity="0.8"/>
+  <circle cx="800" cy="140" r="30" fill="#E5E7EB" fill-opacity="0.8"/>
+  
+  <path d="M780 120L770 80" stroke="#E5E7EB" stroke-width="12" stroke-linecap="round" stroke-opacity="0.8"/>
+  <path d="M820 120L830 80" stroke="#E5E7EB" stroke-width="12" stroke-linecap="round" stroke-opacity="0.8"/>
+  
+  <circle cx="790" cy="135" r="5" fill="#4B5563"/>
+  <circle cx="810" cy="135" r="5" fill="#4B5563"/>
+  
+  <path d="M795 150C795 150 800 155 805 150" stroke="#4B5563" stroke-width="2" stroke-linecap="round"/>
+  
+  <ellipse cx="785" cy="200" rx="10" ry="5" fill="#D1D5DB" fill-opacity="0.8"/>
+  <ellipse cx="815" cy="200" rx="10" ry="5" fill="#D1D5DB" fill-opacity="0.8"/>
+  
+  <!-- Bird silhouette -->
+  <circle cx="1000" cy="150" r="30" fill="#EF4444" fill-opacity="0.8"/>
+  
+  <path d="M970 150C970 150 990 130 1010 150" stroke="#EF4444" stroke-width="6" stroke-linecap="round" stroke-opacity="0.8"/>
+  <path d="M990 150C990 150 1010 130 1030 150" stroke="#EF4444" stroke-width="6" stroke-linecap="round" stroke-opacity="0.8"/>
+  
+  <circle cx="990" cy="140" r="4" fill="#7F1D1D"/>
+  
+  <path d="M1020 150L1040 150" stroke="#B91C1C" stroke-width="6" stroke-linecap="round" stroke-opacity="0.8"/>
+  
+  <path d="M1000 180L990 210" stroke="#EF4444" stroke-width="6" stroke-linecap="round" stroke-opacity="0.8"/>
+  <path d="M1000 180L1010 210" stroke="#EF4444" stroke-width="6" stroke-linecap="round" stroke-opacity="0.8"/>
+  
+  <!-- Banner text -->
+  <rect x="400" y="50" width="400" height="50" rx="10" fill="#FFFFFF" fill-opacity="0.9"/>
+  <path d="M450 75H750" stroke="#F43F5E" stroke-width="6" stroke-linecap="round"/>
+  
+  <rect x="450" y="230" width="300" height="40" rx="20" fill="#F43F5E" fill-opacity="0.9"/>
+  <path d="M500 250H700" stroke="white" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Paw prints -->
+  <g opacity="0.6">
+    <!-- Paw print 1 -->
+    <circle cx="150" cy="220" r="10" fill="#F59E0B"/>
+    <circle cx="170" cy="220" r="10" fill="#F59E0B"/>
+    <circle cx="160" cy="200" r="10" fill="#F59E0B"/>
+    <path d="M150 230C150 230 160 240 170 230" stroke="#F59E0B" stroke-width="6" stroke-linecap="round"/>
+    
+    <!-- Paw print 2 -->
+    <circle cx="700" cy="100" r="10" fill="#6366F1"/>
+    <circle cx="720" cy="100" r="10" fill="#6366F1"/>
+    <circle cx="710" cy="80" r="10" fill="#6366F1"/>
+    <path d="M700 110C700 110 710 120 720 110" stroke="#6366F1" stroke-width="6" stroke-linecap="round"/>
+    
+    <!-- Paw print 3 -->
+    <circle cx="900" cy="220" r="10" fill="#E5E7EB"/>
+    <circle cx="920" cy="220" r="10" fill="#E5E7EB"/>
+    <circle cx="910" cy="200" r="10" fill="#E5E7EB"/>
+    <path d="M900 230C900 230 910 240 920 230" stroke="#E5E7EB" stroke-width="6" stroke-linecap="round"/>
+    
+    <!-- Paw print 4 -->
+    <circle cx="1050" cy="120" r="10" fill="#EF4444"/>
+    <circle cx="1070" cy="120" r="10" fill="#EF4444"/>
+    <circle cx="1060" cy="100" r="10" fill="#EF4444"/>
+    <path d="M1050 130C1050 130 1060 140 1070 130" stroke="#EF4444" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Gradient definition -->
+  <defs>
+    <linearGradient id="paint0_linear" x1="0" y1="0" x2="1200" y2="300" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FEF2F2"/>
+      <stop offset="0.5" stop-color="#FFF1F2"/>
+      <stop offset="1" stop-color="#EFF6FF"/>
+    </linearGradient>
+  </defs>
+</svg>

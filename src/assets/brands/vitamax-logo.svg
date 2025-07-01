@@ -1,0 +1,31 @@
+<svg width="400" height="200" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="200" fill="white"/>
+  
+  <!-- Brand background -->
+  <rect x="50" y="50" width="300" height="100" rx="10" fill="#F59E0B"/>
+  
+  <!-- V letter -->
+  <path d="M80 70L100 130L120 70" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- I letter -->
+  <path d="M140 70V130" stroke="white" stroke-width="12" stroke-linecap="round"/>
+  
+  <!-- T letter -->
+  <path d="M160 70H200" stroke="white" stroke-width="12" stroke-linecap="round"/>
+  <path d="M180 70V130" stroke="white" stroke-width="12" stroke-linecap="round"/>
+  
+  <!-- A letter -->
+  <path d="M220 130V70" stroke="white" stroke-width="12" stroke-linecap="round"/>
+  <path d="M250 130V70" stroke="white" stroke-width="12" stroke-linecap="round"/>
+  <path d="M220 100H250" stroke="white" stroke-width="12" stroke-linecap="round"/>
+  
+  <!-- M letter -->
+  <path d="M270 130V70" stroke="white" stroke-width="12" stroke-linecap="round"/>
+  <path d="M270 70L290 100L310 70" stroke="white" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M310 130V70" stroke="white" stroke-width="12" stroke-linecap="round"/>
+  
+  <!-- Vitamin pill icon -->
+  <circle cx="340" cy="100" r="20" fill="white"/>
+  <path d="M330 100H350" stroke="#F59E0B" stroke-width="6" stroke-linecap="round"/>
+  <path d="M340 90V110" stroke="#F59E0B" stroke-width="6" stroke-linecap="round"/>
+</svg>

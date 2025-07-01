@@ -1,0 +1,68 @@
+<svg width="1200" height="400" viewBox="0 0 1200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="400" fill="#F3F4F6"/>
+  
+  <!-- Banner background with gradient -->
+  <rect x="0" y="0" width="1200" height="400" fill="url(#paint0_linear)"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="200" cy="100" r="50" fill="#FEF3C7" fill-opacity="0.6"/>
+  <circle cx="1000" cy="300" r="70" fill="#DBEAFE" fill-opacity="0.6"/>
+  <circle cx="900" cy="100" r="40" fill="#D1FAE5" fill-opacity="0.6"/>
+  <circle cx="300" cy="300" r="60" fill="#FEE2E2" fill-opacity="0.6"/>
+  
+  <!-- Paw prints -->
+  <g opacity="0.8">
+    <!-- Paw print 1 -->
+    <circle cx="100" cy="150" r="15" fill="#F59E0B" fill-opacity="0.6"/>
+    <circle cx="130" cy="150" r="15" fill="#F59E0B" fill-opacity="0.6"/>
+    <circle cx="115" cy="120" r="15" fill="#F59E0B" fill-opacity="0.6"/>
+    <path d="M100 165C100 165 115 180 130 165" stroke="#F59E0B" stroke-width="10" stroke-linecap="round" stroke-opacity="0.6"/>
+    
+    <!-- Paw print 2 -->
+    <circle cx="1100" cy="200" r="15" fill="#3B82F6" fill-opacity="0.6"/>
+    <circle cx="1130" cy="200" r="15" fill="#3B82F6" fill-opacity="0.6"/>
+    <circle cx="1115" cy="170" r="15" fill="#3B82F6" fill-opacity="0.6"/>
+    <path d="M1100 215C1100 215 1115 230 1130 215" stroke="#3B82F6" stroke-width="10" stroke-linecap="round" stroke-opacity="0.6"/>
+    
+    <!-- Paw print 3 -->
+    <circle cx="400" cy="100" r="10" fill="#EC4899" fill-opacity="0.6"/>
+    <circle cx="420" cy="100" r="10" fill="#EC4899" fill-opacity="0.6"/>
+    <circle cx="410" cy="80" r="10" fill="#EC4899" fill-opacity="0.6"/>
+    <path d="M400 110C400 110 410 120 420 110" stroke="#EC4899" stroke-width="6" stroke-linecap="round" stroke-opacity="0.6"/>
+  </g>
+  
+  <!-- Pet silhouettes -->
+  <!-- Dog -->
+  <path d="M800 250C800 250 780 230 780 200C780 170 800 150 800 150C800 150 820 170 820 200C820 230 800 250 800 250Z" fill="#F59E0B" fill-opacity="0.8"/>
+  <circle cx="790" cy="180" r="5" fill="#92400E"/>
+  <circle cx="810" cy="180" r="5" fill="#92400E"/>
+  <path d="M795 190C795 190 800 195 805 190" stroke="#92400E" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Cat -->
+  <path d="M700 200C700 200 680 220 680 250C680 280 700 300 700 300" stroke="#6366F1" stroke-width="10" stroke-linecap="round" stroke-opacity="0.8"/>
+  <path d="M700 200C700 200 720 220 720 250C720 280 700 300 700 300" stroke="#6366F1" stroke-width="10" stroke-linecap="round" stroke-opacity="0.8"/>
+  <circle cx="700" cy="250" r="20" fill="#6366F1" fill-opacity="0.8"/>
+  <path d="M690 240L680 230" stroke="#312E81" stroke-width="2" stroke-linecap="round"/>
+  <path d="M710 240L720 230" stroke="#312E81" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="695" cy="245" r="3" fill="#312E81"/>
+  <circle cx="705" cy="245" r="3" fill="#312E81"/>
+  
+  <!-- Banner text -->
+  <rect x="400" y="100" width="400" height="80" rx="10" fill="#FFFFFF" fill-opacity="0.9"/>
+  <path d="M450 140H750" stroke="#3B82F6" stroke-width="8" stroke-linecap="round"/>
+  
+  <rect x="450" y="200" width="300" height="50" rx="10" fill="#FFFFFF" fill-opacity="0.9"/>
+  <path d="M480 225H720" stroke="#F59E0B" stroke-width="6" stroke-linecap="round"/>
+  
+  <rect x="500" y="270" width="200" height="40" rx="20" fill="#EF4444" fill-opacity="0.9"/>
+  <path d="M550 290H650" stroke="white" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Gradient definition -->
+  <defs>
+    <linearGradient id="paint0_linear" x1="0" y1="0" x2="1200" y2="400" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DBEAFE"/>
+      <stop offset="0.5" stop-color="#EFF6FF"/>
+      <stop offset="1" stop-color="#FEF3C7"/>
+    </linearGradient>
+  </defs>
+</svg>

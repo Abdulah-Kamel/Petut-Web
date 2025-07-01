@@ -1,0 +1,32 @@
+<svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#F3F4F6"/>
+  
+  <!-- Category background -->
+  <rect x="50" y="50" width="500" height="300" rx="20" fill="#FEF3C7"/>
+  
+  <!-- Dog silhouette -->
+  <path d="M300 150C333.137 150 360 123.137 360 90C360 56.863 333.137 30 300 30C266.863 30 240 56.863 240 90C240 123.137 266.863 150 300 150Z" fill="#F59E0B"/>
+  
+  <path d="M240 90C240 90 220 70 220 50C220 30 240 20 240 20" stroke="#F59E0B" stroke-width="12" stroke-linecap="round"/>
+  <path d="M360 90C360 90 380 70 380 50C380 30 360 20 360 20" stroke="#F59E0B" stroke-width="12" stroke-linecap="round"/>
+  
+  <path d="M300 150V200" stroke="#F59E0B" stroke-width="12" stroke-linecap="round"/>
+  
+  <path d="M300 200L240 260" stroke="#F59E0B" stroke-width="12" stroke-linecap="round"/>
+  <path d="M300 200L360 260" stroke="#F59E0B" stroke-width="12" stroke-linecap="round"/>
+  
+  <path d="M240 260L220 320" stroke="#F59E0B" stroke-width="12" stroke-linecap="round"/>
+  <path d="M360 260L380 320" stroke="#F59E0B" stroke-width="12" stroke-linecap="round"/>
+  
+  <!-- Dog face -->
+  <circle cx="280" cy="80" r="10" fill="#7C2D12"/>
+  <circle cx="320" cy="80" r="10" fill="#7C2D12"/>
+  
+  <path d="M290 100C290 100 300 110 310 100" stroke="#7C2D12" stroke-width="6" stroke-linecap="round"/>
+  
+  <path d="M300 90V95" stroke="#7C2D12" stroke-width="6" stroke-linecap="round"/>
+  
+  <!-- Category name -->
+  <rect x="200" y="340" width="200" height="40" rx="10" fill="#F59E0B"/>
+  <path d="M250 360H350" stroke="white" stroke-width="6" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,91 @@
+<svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#F3F4F6"/>
+  
+  <!-- Category background -->
+  <rect x="50" y="50" width="500" height="300" rx="20" fill="#DBEAFE"/>
+  
+  <!-- Pet shampoo bottle -->
+  <rect x="100" y="120" width="60" height="100" rx="10" fill="#60A5FA"/>
+  <rect x="110" y="100" width="40" height="20" rx="5" fill="#60A5FA"/>
+  <rect x="110" y="120" width="40" height="30" rx="2" fill="#93C5FD"/>
+  
+  <path d="M120 135H140" stroke="#1E40AF" stroke-width="2" stroke-linecap="round"/>
+  <path d="M120 140H140" stroke="#1E40AF" stroke-width="2" stroke-linecap="round"/>
+  
+  <path d="M115 160H145" stroke="#93C5FD" stroke-width="2" stroke-linecap="round"/>
+  <path d="M115 165H145" stroke="#93C5FD" stroke-width="2" stroke-linecap="round"/>
+  <path d="M115 170H145" stroke="#93C5FD" stroke-width="2" stroke-linecap="round"/>
+  <path d="M115 175H145" stroke="#93C5FD" stroke-width="2" stroke-linecap="round"/>
+  <path d="M115 180H145" stroke="#93C5FD" stroke-width="2" stroke-linecap="round"/>
+  <path d="M115 185H145" stroke="#93C5FD" stroke-width="2" stroke-linecap="round"/>
+  <path d="M115 190H145" stroke="#93C5FD" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Pet brush -->
+  <rect x="200" y="120" width="60" height="20" rx="5" fill="#F472B6"/>
+  <path d="M200 130H180" stroke="#F472B6" stroke-width="8" stroke-linecap="round"/>
+  
+  <path d="M210 140V160" stroke="#F472B6" stroke-width="4" stroke-linecap="round"/>
+  <path d="M220 140V165" stroke="#F472B6" stroke-width="4" stroke-linecap="round"/>
+  <path d="M230 140V170" stroke="#F472B6" stroke-width="4" stroke-linecap="round"/>
+  <path d="M240 140V165" stroke="#F472B6" stroke-width="4" stroke-linecap="round"/>
+  <path d="M250 140V160" stroke="#F472B6" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Pet nail clippers -->
+  <path d="M300 120C300 120 290 130 290 150C290 170 300 180 300 180" stroke="#9CA3AF" stroke-width="8" stroke-linecap="round"/>
+  <path d="M300 120C300 120 310 130 310 150C310 170 300 180 300 180" stroke="#9CA3AF" stroke-width="8" stroke-linecap="round"/>
+  
+  <path d="M290 150L310 150" stroke="#4B5563" stroke-width="2" stroke-linecap="round"/>
+  
+  <path d="M290 150L270 130" stroke="#9CA3AF" stroke-width="6" stroke-linecap="round"/>
+  <path d="M310 150L330 130" stroke="#9CA3AF" stroke-width="6" stroke-linecap="round"/>
+  
+  <!-- Pet grooming scissors -->
+  <path d="M380 120L420 180" stroke="#D1D5DB" stroke-width="4" stroke-linecap="round"/>
+  <path d="M380 120C380 120 370 110 380 100C390 90 400 100 400 100" stroke="#D1D5DB" stroke-width="6" stroke-linecap="round"/>
+  <path d="M420 180C420 180 430 190 420 200C410 210 400 200 400 200" stroke="#D1D5DB" stroke-width="6" stroke-linecap="round"/>
+  
+  <!-- Pet dryer -->
+  <rect x="460" y="120" width="40" height="60" rx="5" fill="#F87171"/>
+  <rect x="500" y="130" width="20" height="40" rx="10" fill="#F87171"/>
+  
+  <circle cx="480" cy="140" r="10" fill="#FCA5A5"/>
+  <path d="M475 140H485" stroke="#B91C1C" stroke-width="2" stroke-linecap="round"/>
+  <path d="M480 135V145" stroke="#B91C1C" stroke-width="2" stroke-linecap="round"/>
+  
+  <path d="M470 160H490" stroke="#FCA5A5" stroke-width="2" stroke-linecap="round"/>
+  <path d="M470 165H490" stroke="#FCA5A5" stroke-width="2" stroke-linecap="round"/>
+  <path d="M470 170H490" stroke="#FCA5A5" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Pet comb -->
+  <rect x="180" y="220" width="80" height="10" rx="2" fill="#A78BFA"/>
+  <path d="M190 230V250" stroke="#A78BFA" stroke-width="4" stroke-linecap="round"/>
+  <path d="M200 230V255" stroke="#A78BFA" stroke-width="4" stroke-linecap="round"/>
+  <path d="M210 230V260" stroke="#A78BFA" stroke-width="4" stroke-linecap="round"/>
+  <path d="M220 230V265" stroke="#A78BFA" stroke-width="4" stroke-linecap="round"/>
+  <path d="M230 230V260" stroke="#A78BFA" stroke-width="4" stroke-linecap="round"/>
+  <path d="M240 230V255" stroke="#A78BFA" stroke-width="4" stroke-linecap="round"/>
+  <path d="M250 230V250" stroke="#A78BFA" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Pet toothbrush -->
+  <rect x="300" y="220" width="10" height="60" rx="2" fill="#34D399"/>
+  <path d="M300 220C300 220 290 210 300 200C310 190 320 200 320 200" stroke="#34D399" stroke-width="6" stroke-linecap="round"/>
+  
+  <path d="M310 220L320 220" stroke="#6EE7B7" stroke-width="2" stroke-linecap="round"/>
+  <path d="M310 225L320 225" stroke="#6EE7B7" stroke-width="2" stroke-linecap="round"/>
+  <path d="M310 230L320 230" stroke="#6EE7B7" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Pet grooming glove -->
+  <path d="M380 220C380 220 370 230 370 250C370 270 380 280 380 280" stroke="#FBBF24" stroke-width="8" stroke-linecap="round"/>
+  <path d="M380 220C380 220 390 230 390 250C390 270 380 280 380 280" stroke="#FBBF24" stroke-width="8" stroke-linecap="round"/>
+  <path d="M390 220C390 220 400 230 400 250C400 270 390 280 390 280" stroke="#FBBF24" stroke-width="8" stroke-linecap="round"/>
+  <path d="M400 220C400 220 410 230 410 250C410 270 400 280 400 280" stroke="#FBBF24" stroke-width="8" stroke-linecap="round"/>
+  <path d="M410 220C410 220 420 230 420 250C420 270 410 280 410 280" stroke="#FBBF24" stroke-width="8" stroke-linecap="round"/>
+  
+  <path d="M370 250H420" stroke="#F59E0B" stroke-width="4" stroke-linecap="round"/>
+  
+  <path d="M380 250C380 250 360 260 360 270" stroke="#FBBF24" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- Category name -->
+  <rect x="200" y="340" width="200" height="40" rx="10" fill="#3B82F6"/>
+  <path d="M250 360H350" stroke="white" stroke-width="6" stroke-linecap="round"/>
+</svg>
