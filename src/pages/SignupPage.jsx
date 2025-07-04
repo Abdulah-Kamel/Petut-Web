@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { signupStart, signupSuccess, signupFailure } from '../store/slices/authSlice'
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
+import { auth } from '../firebase'
 
 const SignupPage = () => {
   const navigate = useNavigate()
-  const dispatch = useDispatch()
-  const { loading, error } = useSelector(state => state.auth)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
   
   const [formData, setFormData] = useState({
     fullName: '',
@@ -67,32 +67,39 @@ const SignupPage = () => {
     return Object.keys(errors).length === 0
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    
-    if (validateForm()) {
-      dispatch(signupStart())
-      
-      // Simulate API call
-      setTimeout(() => {
-        // Check if email is already in use (mock validation)
-        if (formData.email === 'user@example.com') {
-          dispatch(signupFailure('Email is already in use'))
-        } else {
-          // Mock successful signup
-          const userData = {
-            id: 2,
-            name: formData.fullName,
-            email: formData.email,
-            avatar: '/src/assets/avatar-default.jpg'
-          }
-          
-          dispatch(signupSuccess(userData))
-          navigate('/')
-        }
-      }, 1000)
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!validateForm()) return;
+
+    setLoading(true);
+    setError('');
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
+      await updateProfile(userCredential.user, {
+        displayName: formData.fullName,
+      });
+      navigate('/');
+    } catch (err) {
+      switch (err.code) {
+        case 'auth/email-already-in-use':
+          setError('This email address is already in use. Please try another.');
+          break;
+        case 'auth/invalid-email':
+          setError('Please enter a valid email address.');
+          break;
+        case 'auth/weak-password':
+          setError('The password is too weak. Please use at least 6 characters.');
+          break;
+        default:
+          setError('Failed to create an account. Please try again later.');
+          break;
+      }
+    } finally {
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-12">

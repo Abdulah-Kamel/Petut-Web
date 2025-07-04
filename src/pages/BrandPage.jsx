@@ -1,6 +1,9 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import ProductCard from '../components/ProductCard';
+import { addToCart } from '../store/slices/cartSlice';
+import { addToFavorites, removeFromFavorites } from '../store/slices/favoritesSlice';
 
 // Static data for brands, as we don't have a dedicated brand API
 const brandDetails = {
@@ -44,7 +47,9 @@ const brandDetails = {
 
 const BrandPage = () => {
   const { brandId } = useParams();
+  const dispatch = useDispatch();
   const { products: allProducts, loading, error: catalogError } = useSelector(state => state.catalog);
+  const favorites = useSelector(state => state.favorites.items);
 
   const [brand, setBrand] = useState(null);
   const [products, setProducts] = useState([]);
@@ -102,6 +107,19 @@ const BrandPage = () => {
     }
     return sorted;
   }, [products, sortOption]);
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+  };
+
+  const toggleFavorite = (product) => {
+    const isFavorite = favorites.some(item => item.id === product.id);
+    if (isFavorite) {
+      dispatch(removeFromFavorites(product.id));
+    } else {
+      dispatch(addToFavorites(product));
+    }
+  };
 
   if (loading && !brand) {
     return (
@@ -186,40 +204,13 @@ const BrandPage = () => {
       {sortedProducts.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {sortedProducts.map(product => (
-            <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-              <Link to={`/product/${product.id}`} className="block">
-                <div className="h-48 overflow-hidden flex items-center justify-center bg-white p-2">
-                  <img 
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-contain transition-transform duration-300 hover:scale-105"
-                  />
-                </div>
-              </Link>
-              <div className="p-4">
-                <h3 className="text-lg font-semibold text-gray-800 mb-2 truncate" title={product.name}>
-                    <Link to={`/product/${product.id}`}>{product.name}</Link>
-                </h3>
-                <p className="text-gray-600 text-sm mb-4 line-clamp-2">{product.description}</p>
-                <div className="flex justify-between items-center">
-                  <span className="text-lg font-bold text-primary">${product.price.toFixed(2)}</span>
-                  <div className="flex items-center">
-                    <svg className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
-                    </svg>
-                    <span className="text-sm text-gray-600 ml-1">{product.rating?.rate || 'N/A'}</span>
-                    <span className="text-xs text-gray-500 ml-1">({product.rating?.count || 0})</span>
-                  </div>
-                </div>
-                <div className="mt-4">
-                  <button 
-                    className="w-full bg-primary text-white px-3 py-2 rounded-lg text-sm font-semibold hover:bg-primary-dark transition-colors duration-300"
-                  >
-                    Add to Cart
-                  </button>
-                </div>
-              </div>
-            </div>
+            <ProductCard 
+              key={product.id} 
+              product={product} 
+              onAddToCart={handleAddToCart}
+              onToggleFavorite={toggleFavorite}
+              isFavorite={favorites.some(item => item.id === product.id)}
+            />
           ))}
         </div>
       ) : (

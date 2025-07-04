@@ -148,7 +148,7 @@ const FilterPage = () => {
   ]
 
   return (
-    <div className="max-w-7xl mx-auto px-4 pb-20">
+    <div className="max-w-7xl mx-auto px-4 pb-20 mt-12">
       <div className="sticky top-0 bg-white z-10 py-4 border-b border-gray-200">
         <div className="flex justify-between items-center">
           <button 

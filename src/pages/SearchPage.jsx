@@ -73,7 +73,7 @@ const SearchPage = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4">
+    <div className="max-w-7xl mx-auto px-4 mt-14">
       <div className="sticky top-0 bg-white z-10 pt-4 pb-2">
         <form onSubmit={handleSearch} className="relative mb-4">
           <div className="relative flex items-center">

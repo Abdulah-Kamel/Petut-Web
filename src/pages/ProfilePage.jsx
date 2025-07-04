@@ -1,27 +1,24 @@
-import { useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { logout } from '../store/slices/authSlice'
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase';
 
 const ProfilePage = () => {
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-  const { user, isAuthenticated } = useSelector(state => state.auth)
-  
-  // Redirect if not authenticated
-  if (!isAuthenticated) {
-    navigate('/login')
-    return null
-  }
+  const navigate = useNavigate();
+  const { currentUser } = useAuth();
+  const [activeTab, setActiveTab] = useState('profile');
 
-  const [activeTab, setActiveTab] = useState('profile')
-
-  const handleLogout = () => {
+  const handleLogout = async () => {
     if (window.confirm('Are you sure you want to log out?')) {
-      dispatch(logout())
-      navigate('/')
+      try {
+        await signOut(auth);
+        navigate('/');
+      } catch (error) {
+        console.error('Failed to log out', error);
+      }
     }
-  }
+  };
 
   // Mock order history data
   const orders = [
@@ -68,7 +65,7 @@ const ProfilePage = () => {
   ]
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
+    <div className="max-w-7xl mx-auto px-4 py-8 mt-12">
       <div className="flex flex-col md:flex-row gap-8">
         {/* Sidebar */}
         <div className="md:w-1/4">
@@ -76,13 +73,13 @@ const ProfilePage = () => {
             <div className="p-6 text-center border-b border-gray-200">
               <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-4">
                 <img 
-                  src={user?.avatar || 'https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg'}
-                  alt={user?.name || 'User'}
+                  src={currentUser?.photoURL || 'https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg'}
+                  alt={currentUser?.displayName || 'User'}
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h2 className="text-xl font-bold">{user?.name || 'User'}</h2>
-              <p className="text-gray-600">{user?.email || 'user@example.com'}</p>
+              <h2 className="text-xl font-bold">{currentUser?.displayName || 'User'}</h2>
+              <p className="text-gray-600">{currentUser?.email || 'user@example.com'}</p>
             </div>
             
             <div className="p-4">
@@ -170,7 +167,7 @@ const ProfilePage = () => {
                       type="text"
                       id="fullName"
                       name="fullName"
-                      defaultValue={user?.name || ''}
+                      defaultValue={currentUser?.displayName || ''}
                       className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
                     />
                   </div>
@@ -183,7 +180,7 @@ const ProfilePage = () => {
                       type="email"
                       id="email"
                       name="email"
-                      defaultValue={user?.email || ''}
+                      defaultValue={currentUser?.email || ''}
                       className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
                     />
                   </div>

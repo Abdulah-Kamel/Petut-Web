@@ -14,7 +14,8 @@ import DeliveryPage from './pages/DeliveryPage'
 import OrderConfirmationPage from './pages/OrderConfirmationPage'
 import CartPage from './pages/CartPage'
 import PaymentPage from './pages/PaymentPage'
-import ProfilePage from './pages/ProfilePage'
+import ProfilePage from './pages/ProfilePage';
+import ProtectedRoute from './components/ProtectedRoute';
 import FavoritesPage from './pages/FavoritesPage'
 
 function App() {
@@ -33,7 +34,14 @@ function App() {
         <Route path="order-confirmation" element={<OrderConfirmationPage />} />
         <Route path="cart" element={<CartPage />} />
         <Route path="payment" element={<PaymentPage />} />
-        <Route path="profile" element={<ProfilePage />} />
+        <Route 
+          path="profile" 
+          element={
+            <ProtectedRoute>
+              <ProfilePage />
+            </ProtectedRoute>
+          } 
+        />
         <Route path="favorites" element={<FavoritesPage />} />
       </Route>
       <Route path="/login" element={<LoginPage />} />

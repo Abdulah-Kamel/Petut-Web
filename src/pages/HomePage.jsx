@@ -6,10 +6,15 @@ import {
   fetchProductsSuccess,
   fetchProductsFailure,
 } from "../store/slices/catalogSlice";
-import brit_care from "../assets/products/brit-care.jpg";
+import ProductCard from "../components/ProductCard";
+import { addToCart } from "../store/slices/cartSlice";
 const HomePage = () => {
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector((state) => state.catalog);
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+  };
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -95,54 +100,11 @@ const HomePage = () => {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {products.slice(0, 4).map((product) => (
-              <div
+              <ProductCard
                 key={product.id}
-                className="card hover:shadow-lg transition-shadow"
-              >
-                <Link to={`/product/${product.id}`}>
-                  <div className="relative pb-[100%] overflow-hidden">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="absolute inset-0 w-full h-full object-contain"
-                    />
-                  </div>
-                </Link>
-                <div className="p-4">
-                  <div className="flex justify-between items-start mb-2">
-                    <h3
-                      className="font-semibold text-lg truncate"
-                      title={product.name}
-                    >
-                      <Link to={`/product/${product.id}`}>{product.name}</Link>
-                    </h3>
-                    <span className="badge-secondary whitespace-nowrap">
-                      {product.category}
-                    </span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="font-bold text-lg">
-                      ${product.price.toFixed(2)}
-                    </span>
-                    <button className="btn-primary py-1 px-3">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
+                product={product}
+                onAddToCart={handleAddToCart}
+              />
             ))}
           </div>
         )}
@@ -157,7 +119,7 @@ const HomePage = () => {
               <img
                 src="https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg"
                 alt="Electronics"
-                className="w-16 h-16 group-hover:scale-110 transition-transform object-contain"
+                className="w-full h-full group-hover:scale-110 transition-transform object-contain"
               />
             </div>
             <p className="text-center mt-2 font-medium">Electronics</p>
@@ -167,7 +129,7 @@ const HomePage = () => {
               <img
                 src="https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg"
                 alt="Jewelery"
-                className="w-16 h-16 group-hover:scale-110 transition-transform object-contain"
+                className="w-full h-full group-hover:scale-110 transition-transform object-contain"
               />
             </div>
             <p className="text-center mt-2 font-medium">Jewelery</p>
@@ -177,7 +139,7 @@ const HomePage = () => {
               <img
                 src="https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg"
                 alt="Men's Clothing"
-                className="w-16 h-16 group-hover:scale-110 transition-transform object-contain"
+                className="w-full h-full group-hover:scale-110 transition-transform object-contain"
               />
             </div>
             <p className="text-center mt-2 font-medium">Men's Clothing</p>
@@ -187,7 +149,7 @@ const HomePage = () => {
               <img
                 src="https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg"
                 alt="Women's Clothing"
-                className="w-16 h-16 group-hover:scale-110 transition-transform object-contain"
+                className="w-full h-full group-hover:scale-110 transition-transform object-contain"
               />
             </div>
             <p className="text-center mt-2 font-medium">Women's Clothing</p>

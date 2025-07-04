@@ -1,18 +1,16 @@
-import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { loginStart, loginSuccess, loginFailure } from '../store/slices/authSlice'
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase';
 
 const LoginPage = () => {
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-  const { loading, error } = useSelector(state => state.auth)
-  
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
-    rememberMe: false
-  })
+  });
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const [formErrors, setFormErrors] = useState({})
 
@@ -51,31 +49,34 @@ const LoginPage = () => {
     return Object.keys(errors).length === 0
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    
+    const handleSubmit = async (e) => {
+    e.preventDefault();
+
     if (validateForm()) {
-      dispatch(loginStart())
-      
-      // Simulate API call
-      setTimeout(() => {
-        // Mock successful login
-        if (formData.email === 'user@example.com' && formData.password === 'password123') {
-          const userData = {
-            id: 1,
-            name: 'John Doe',
-            email: formData.email,
-            avatar: '/src/assets/avatar.jpg'
-          }
-          
-          dispatch(loginSuccess(userData))
-          navigate('/')
-        } else {
-          dispatch(loginFailure('Invalid email or password'))
+      setLoading(true);
+      setError('');
+      try {
+        await signInWithEmailAndPassword(auth, formData.email, formData.password);
+        navigate('/');
+      } catch (err) {
+        switch (err.code) {
+          case 'auth/user-not-found':
+          case 'auth/wrong-password':
+          case 'auth/invalid-credential':
+            setError('Invalid email or password.');
+            break;
+          case 'auth/invalid-email':
+            setError('Please enter a valid email address.');
+            break;
+          default:
+            setError('Failed to log in. Please try again.');
+            break;
         }
-      }, 1000)
+      } finally {
+        setLoading(false);
+      }
     }
-  }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-12">
