@@ -1,12 +1,21 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import {
+  setSelectedCategories,
+  setSelectedBrands,
+  setPriceRange,
+  setRating,
+} from '../store/slices/filterSlice';
 import { addToCart } from '../store/slices/cartSlice';
 import { addToFavorites, removeFromFavorites } from '../store/slices/favoritesSlice';
 import ProductCard from '../components/ProductCard';
 
 const CatalogPage = () => {
-  const dispatch = useDispatch()
+    const dispatch = useDispatch();
+  const location = useLocation();
+  const filters = useSelector((state) => state.filter);
   const { products, loading, error } = useSelector(state => state.catalog)
   const favorites = useSelector(state => state.favorites.items)
   const [activeTab, setActiveTab] = useState('all')
@@ -17,7 +26,30 @@ const CatalogPage = () => {
       const uniqueCategories = [...new Set(products.map(p => p.category))]
       setCategories(uniqueCategories)
     }
-  }, [products])
+    }, [products]);
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const categories = params.getAll('category');
+    const brands = params.getAll('brand');
+    const priceMin = params.get('price_min');
+    const priceMax = params.get('price_max');
+    const rating = params.get('rating');
+
+    // Update Redux state from URL, but only if filters are present
+    if (categories.length > 0) dispatch(setSelectedCategories(categories));
+    if (brands.length > 0) dispatch(setSelectedBrands(brands));
+    if (priceMin && priceMax) {
+      dispatch(setPriceRange({ min: parseInt(priceMin, 10), max: parseInt(priceMax, 10) }));
+    } else {
+      dispatch(setPriceRange({ min: 0, max: 10000 })); // Reset to a wide default
+    }
+    if (rating) {
+      dispatch(setRating(parseInt(rating, 10)));
+    } else {
+      dispatch(setRating(0)); // Reset to default
+    }
+  }, [location.search, dispatch]);
 
   const toggleFavorite = (product) => {
     const isFavorite = favorites.some(item => item.id === product.id)
@@ -32,9 +64,36 @@ const CatalogPage = () => {
     dispatch(addToCart(product))
   }
 
-  const filteredProducts = activeTab === 'all' 
-    ? products 
-    : products.filter(product => product.category.toLowerCase() === activeTab.toLowerCase())
+  const filteredProducts = products.filter((product) => {
+    const { selectedCategories, selectedBrands, priceRange, rating } = filters;
+
+    // Category filter from Redux state
+    if (selectedCategories.length > 0 && !selectedCategories.includes(product.category)) {
+      return false;
+    }
+
+    // Brand filter from Redux state
+    if (selectedBrands.length > 0 && !selectedBrands.includes(product.brand)) {
+      return false;
+    }
+
+    // Price range filter from Redux state
+    if (product.price < priceRange.min || product.price > priceRange.max) {
+      return false;
+    }
+
+    // Rating filter from Redux state
+    if (rating > 0 && product.rating < rating) {
+      return false;
+    }
+    
+    // Local category tab filter
+    if (activeTab !== 'all' && product.category.toLowerCase() !== activeTab.toLowerCase()) {
+      return false;
+    }
+
+    return true;
+  });
 
   return (
     <div className="max-w-7xl mx-auto">

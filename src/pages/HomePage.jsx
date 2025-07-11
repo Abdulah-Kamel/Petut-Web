@@ -8,6 +8,7 @@ import {
 } from "../store/slices/catalogSlice";
 import ProductCard from "../components/ProductCard";
 import { addToCart } from "../store/slices/cartSlice";
+import heroDog from "../assets/banners/hero-dog.png"
 const HomePage = () => {
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector((state) => state.catalog);
@@ -59,7 +60,7 @@ const HomePage = () => {
       <section className="relative bg-gradient-to-r from-secondary-light to-secondary rounded-2xl overflow-hidden mb-8">
         <div className="container mx-auto px-6 py-12 md:py-24">
           <div className="flex flex-col md:flex-row items-center">
-            <div className="md:w-1/2 mb-8 md:mb-0">
+            <div className="md:w-1/2 max-md:order-last mb-8 md:mb-0">
               <h1 className="text-4xl md:text-5xl font-bold text-neutral mb-4">
                 Taking care of <span className="text-primary">your pet</span>
               </h1>
@@ -71,11 +72,11 @@ const HomePage = () => {
                 Shop Now
               </Link>
             </div>
-            <div className="md:w-1/2 flex justify-center">
+            <div className="md:w-1/2 max-md:order-first lg:h-[500px] md:h-auto flex justify-center">
               <img
-                src="../assets/hero-dog.png"
+                src={heroDog}
                 alt="Happy dog"
-                className="max-w-full h-auto rounded-lg shadow-lg"
+                className="max-w-full h-auto rounded-lg"
               />
             </div>
           </div>

@@ -122,17 +122,42 @@ const FilterPage = () => {
 
   const handleApply = () => {
     // Dispatch all filter actions
-    dispatch(setSelectedCategories(localFilters.categories))
-    dispatch(setSelectedBrands(localFilters.brands))
-    dispatch(setPriceRange(localFilters.priceRange))
-    dispatch(setAgeRanges(localFilters.ageRanges))
-    dispatch(setBreedSizes(localFilters.breedSizes)) // This will update animalBreedSizes in the store
-    dispatch(setSortOption(localFilters.sortOption))
-    dispatch(setRating(localFilters.rating))
-    
-    // Navigate back to catalog with applied filters
-    navigate('/catalog')
-  }
+    dispatch(setSelectedCategories(localFilters.categories));
+    dispatch(setSelectedBrands(localFilters.brands));
+    dispatch(setPriceRange(localFilters.priceRange));
+    dispatch(setAgeRanges(localFilters.ageRanges));
+    dispatch(setBreedSizes(localFilters.breedSizes));
+    dispatch(setSortOption(localFilters.sortOption));
+    dispatch(setRating(localFilters.rating));
+
+    // Construct query params
+    const params = new URLSearchParams();
+    if (localFilters.categories.length) {
+      localFilters.categories.forEach(c => params.append('category', c));
+    }
+    if (localFilters.brands.length) {
+      localFilters.brands.forEach(b => params.append('brand', b));
+    }
+    if (localFilters.priceRange.min > 0 || localFilters.priceRange.max < 1000) {
+      params.set('price_min', localFilters.priceRange.min);
+      params.set('price_max', localFilters.priceRange.max);
+    }
+    if (localFilters.ageRanges.length) {
+      localFilters.ageRanges.forEach(a => params.append('age', a));
+    }
+    if (localFilters.breedSizes.length) {
+      localFilters.breedSizes.forEach(s => params.append('breed', s));
+    }
+    if (localFilters.sortOption !== 'popularity') {
+      params.set('sort', localFilters.sortOption);
+    }
+    if (localFilters.rating > 0) {
+      params.set('rating', localFilters.rating);
+    }
+
+    // Navigate back to catalog with applied filters in URL
+    navigate(`/catalog?${params.toString()}`);
+  };
 
   // Mock data for filters
   const availableCategories = ['Food', 'Vitamins', 'Toys', 'Grooming', 'Accessories']

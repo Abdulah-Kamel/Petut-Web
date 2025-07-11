@@ -1,0 +1,29 @@
+import React from 'react';
+
+const OrderSummary = ({ totalAmount, deliveryFee }) => {
+  const finalTotal = totalAmount + deliveryFee;
+
+  return (
+    <div className="bg-white rounded-lg border border-gray-200 p-4 mb-6">
+      <h3 className="font-semibold mb-4">Order Summary</h3>
+      <div className="space-y-2 text-sm">
+        <div className="flex justify-between">
+          <span className="text-gray-600">Subtotal</span>
+          <span>{totalAmount.toFixed(2)} €</span>
+        </div>
+        <div className="flex justify-between">
+          <span className="text-gray-600">Delivery Fee</span>
+          <span>{deliveryFee === 0 ? 'Free' : `${deliveryFee.toFixed(2)} €`}</span>
+        </div>
+        <div className="border-t border-gray-200 pt-2 mt-2">
+          <div className="flex justify-between font-bold">
+            <span>Total</span>
+            <span>{finalTotal.toFixed(2)} €</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default OrderSummary;
