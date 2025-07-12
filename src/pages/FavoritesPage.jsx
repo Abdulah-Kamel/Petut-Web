@@ -30,7 +30,7 @@ const FavoritesPage = () => {
         {favorites.map((product) => (
           <div key={product.id} className="border rounded-lg p-4 hover:shadow-lg transition-shadow">
             <img
-              src={product.image}
+              src={product.imageUrl}
               alt={product.name}
               className="w-full h-48 object-cover rounded-lg mb-4"
             />

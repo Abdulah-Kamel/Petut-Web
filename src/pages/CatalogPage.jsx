@@ -11,6 +11,7 @@ import {
 import { addToCart } from '../store/slices/cartSlice';
 import { addToFavorites, removeFromFavorites } from '../store/slices/favoritesSlice';
 import ProductCard from '../components/ProductCard';
+import {fetchProducts} from "../store/slices/catalogSlice.js";
 
 const CatalogPage = () => {
     const dispatch = useDispatch();
@@ -25,8 +26,11 @@ const CatalogPage = () => {
     if (products.length > 0) {
       const uniqueCategories = [...new Set(products.map(p => p.category))]
       setCategories(uniqueCategories)
+    }else {
+      dispatch(fetchProducts())
     }
-    }, [products]);
+
+    }, []);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);

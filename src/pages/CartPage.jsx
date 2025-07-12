@@ -90,7 +90,7 @@ const CartPage = () => {
               <div key={item.id} className="flex border border-gray-200 rounded-lg overflow-hidden">
                 <div className="w-24 h-24 flex-shrink-0">
                   <img 
-                    src={item.image}
+                    src={item.imageUrl}
                     alt={item.name}
                     className="w-full h-full object-cover"
                   />

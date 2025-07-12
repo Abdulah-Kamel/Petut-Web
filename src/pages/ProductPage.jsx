@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCart } from '../store/slices/cartSlice';
 import { addToFavorites, removeFromFavorites } from '../store/slices/favoritesSlice';
+import {fetchProducts} from "../store/slices/catalogSlice.js";
 
 const ProductPage = () => {
   const { productId } = useParams();
@@ -14,6 +15,7 @@ const ProductPage = () => {
   const [relatedProducts, setRelatedProducts] = useState([]);
 
   useEffect(() => {
+    console.log(allProducts,productId)
     if (allProducts.length > 0 && productId) {
       const selectedProduct = allProducts.find(p => p.id.toString() === productId);
       setProduct(selectedProduct);
@@ -24,6 +26,8 @@ const ProductPage = () => {
           .slice(0, 4);
         setRelatedProducts(related);
       }
+    }else {
+      dispatch(fetchProducts())
     }
   }, [productId, allProducts]);
 
@@ -72,7 +76,7 @@ const ProductPage = () => {
         {/* Product Image */}
         <div className="bg-white p-4 rounded-lg shadow-md flex items-center justify-center">
           <img 
-            src={product.image} 
+            src={product.imageUrl}
             alt={product.name} 
             className="max-w-full h-auto object-contain max-h-96"
           />
@@ -126,7 +130,7 @@ const ProductPage = () => {
                 <Link to={`/product/${relatedProduct.id}`}>
                   <div className="relative pb-[100%] overflow-hidden">
                     <img 
-                      src={relatedProduct.image} 
+                      src={relatedProduct.imageUrl}
                       alt={relatedProduct.name}
                       className="absolute inset-0 w-full h-full object-contain"
                     />

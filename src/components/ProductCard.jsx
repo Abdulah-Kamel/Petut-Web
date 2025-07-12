@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Link } from 'react-router-dom';
 
 const ProductCard = ({ product, onAddToCart, onToggleFavorite, isFavorite }) => {
@@ -15,13 +15,15 @@ const ProductCard = ({ product, onAddToCart, onToggleFavorite, isFavorite }) => 
       onToggleFavorite(product);
     }
   };
-
+  useEffect(()=>{
+    console.log(product)
+  },[])
   return (
     <div className="card hover:shadow-lg transition-shadow flex flex-col h-full">
       <Link to={`/product/${product.id}`} className="h-full flex flex-col">
         <div className="relative pb-[100%] overflow-hidden">
           <img
-            src={product.image}
+            src={product.imageUrl}
             alt={product.name}
             className="absolute inset-0 w-full h-full object-contain p-4"
           />
