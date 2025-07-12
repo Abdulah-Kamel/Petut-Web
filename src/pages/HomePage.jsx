@@ -1,6 +1,6 @@
 // src/pages/HomePage.jsx
 
-import { useEffect } from "react";
+import {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchProducts } from "../store/slices/catalogSlice"; // Import the new thunk
@@ -13,10 +13,17 @@ import heroDog from "../assets/banners/hero-dog.png";
 const HomePage = () => {
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector((state) => state.catalog);
+  const [categories, setCategories] = useState([])
+  // setCategories([products.map(product=>product.category)])
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
   };
+
+  useEffect(() => {
+    products?.map(product=>setCategories([...categories,product.category]))
+    console.log(categories)
+  }, [products])
 
   useEffect(() => {
     // We only fetch products if they haven't been loaded yet.
@@ -84,23 +91,27 @@ const HomePage = () => {
         </section>
 
         {/* Categories */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-6">Shop by Category</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {/* You may want to dynamically generate these from your data */}
-            <Link to="/category/electronics" className="block group">
-              <div className="aspect-square bg-primary-light rounded-lg flex items-center justify-center p-4">
-                <img
-                    src="https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg"
-                    alt="Electronics"
-                    className="w-full h-full group-hover:scale-110 transition-transform object-contain"
-                />
-              </div>
-              <p className="text-center mt-2 font-medium">Electronics</p>
-            </Link>
-            {/* Other category links */}
-          </div>
-        </section>
+        {/*<section className="mb-12">*/}
+        {/*  <h2 className="text-2xl font-bold mb-6">Shop by Category</h2>*/}
+        {/*  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">*/}
+        {/*    /!* You may want to dynamically generate these from your data *!/*/}
+        {/*    {*/}
+        {/*      categories.map((category,index)=>{*/}
+        {/*    return <Link to={`/${category}/`} className="block group" key={index}>*/}
+        {/*      <div className="aspect-square bg-primary-light rounded-lg flex items-center justify-center p-4">*/}
+        {/*        <img*/}
+        {/*            src="https://placehold.co/100x100/"*/}
+        {/*            alt="Electronics"*/}
+        {/*            className="w-full h-full group-hover:scale-110 transition-transform object-contain"*/}
+        {/*        />*/}
+        {/*      </div>*/}
+        {/*      <p className="text-center mt-2 font-medium">category</p>*/}
+        {/*    </Link>*/}
+        {/*      })*/}
+        {/*    }*/}
+        {/*    /!* Other category links *!/*/}
+        {/*  </div>*/}
+        {/*</section>*/}
       </div>
   );
 };

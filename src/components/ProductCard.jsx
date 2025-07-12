@@ -15,9 +15,6 @@ const ProductCard = ({ product, onAddToCart, onToggleFavorite, isFavorite }) => 
       onToggleFavorite(product);
     }
   };
-  useEffect(()=>{
-    console.log(product)
-  },[])
   return (
     <div className="card hover:shadow-lg transition-shadow flex flex-col h-full">
       <Link to={`/product/${product.id}`} className="h-full flex flex-col">
