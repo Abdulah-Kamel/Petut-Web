@@ -9,7 +9,8 @@ import {
   setRating,
 } from '../store/slices/filterSlice';
 import { addToCart } from '../store/slices/cartSlice';
-import { addToFavorites, removeFromFavorites } from '../store/slices/favoritesSlice';
+import { addFavorite, removeFavorite } from '../store/slices/favoritesSlice';
+import { useAuth } from '../context/AuthContext';
 import ProductCard from '../components/ProductCard';
 import {fetchProducts} from "../store/slices/catalogSlice.js";
 
@@ -18,7 +19,8 @@ const CatalogPage = () => {
   const location = useLocation();
   const filters = useSelector((state) => state.filter);
   const { products, loading, error } = useSelector(state => state.catalog)
-  const favorites = useSelector(state => state.favorites.items)
+  const { items: favorites } = useSelector(state => state.favorites);
+  const { currentUser } = useAuth();
   const [activeTab, setActiveTab] = useState('all')
   const [categories, setCategories] = useState([])
 
@@ -56,13 +58,18 @@ const CatalogPage = () => {
   }, [location.search, dispatch]);
 
   const toggleFavorite = (product) => {
-    const isFavorite = favorites.some(item => item.id === product.id)
-    if (isFavorite) {
-      dispatch(removeFromFavorites(product.id))
-    } else {
-      dispatch(addToFavorites(product))
+    if (!currentUser) {
+      // TODO: Implement a more user-friendly notification/modal
+      alert('Please log in to manage your favorites.');
+      return;
     }
-  }
+    const isFavorite = favorites.some(item => item.id === product.id);
+    if (isFavorite) {
+      dispatch(removeFavorite({ userId: currentUser.uid, productId: product.id }));
+    } else {
+      dispatch(addFavorite({ userId: currentUser.uid, product }));
+    }
+  };
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product))

@@ -3,7 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import ProductCard from '../components/ProductCard';
 import { addToCart } from '../store/slices/cartSlice';
-import { addToFavorites, removeFromFavorites } from '../store/slices/favoritesSlice';
+import { addFavorite, removeFavorite } from '../store/slices/favoritesSlice';
+import { useAuth } from '../context/AuthContext';
 
 // Static data for brands, as we don't have a dedicated brand API
 const brandDetails = {
@@ -49,7 +50,8 @@ const BrandPage = () => {
   const { brandId } = useParams();
   const dispatch = useDispatch();
   const { products: allProducts, loading, error: catalogError } = useSelector(state => state.catalog);
-  const favorites = useSelector(state => state.favorites.items);
+  const { items: favorites } = useSelector(state => state.favorites);
+  const { currentUser } = useAuth();
 
   const [brand, setBrand] = useState(null);
   const [products, setProducts] = useState([]);
@@ -113,11 +115,15 @@ const BrandPage = () => {
   };
 
   const toggleFavorite = (product) => {
+    if (!currentUser) {
+      alert('Please log in to manage your favorites.');
+      return;
+    }
     const isFavorite = favorites.some(item => item.id === product.id);
     if (isFavorite) {
-      dispatch(removeFromFavorites(product.id));
+      dispatch(removeFavorite({ userId: currentUser.uid, productId: product.id }));
     } else {
-      dispatch(addToFavorites(product));
+      dispatch(addFavorite({ userId: currentUser.uid, product }));
     }
   };
 

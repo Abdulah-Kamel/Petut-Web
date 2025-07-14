@@ -33,7 +33,7 @@ const ProductCard = ({ product, onAddToCart, onToggleFavorite, isFavorite }) => 
             {onToggleFavorite ? (
               <button
                 onClick={handleToggleFavorite}
-                className="text-gray-400 hover:text-primary focus:outline-none transition-colors flex-shrink-0"
+                className={`${isFavorite ? 'text-primary' : 'text-gray-400 hover:text-primary'} focus:outline-none transition-colors flex-shrink-0`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

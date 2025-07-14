@@ -2,14 +2,16 @@ import { useState, useEffect, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCart } from '../store/slices/cartSlice';
-import { addToFavorites, removeFromFavorites } from '../store/slices/favoritesSlice';
+import { addFavorite, removeFavorite } from '../store/slices/favoritesSlice';
+import { useAuth } from '../context/AuthContext';
 import ProductCard from '../components/ProductCard';
 
 const CategoryPage = () => {
   const { categoryId } = useParams();
   const dispatch = useDispatch();
   const { products: allProducts, loading, error } = useSelector(state => state.catalog);
-  const favorites = useSelector(state => state.favorites.items);
+  const { items: favorites } = useSelector(state => state.favorites);
+  const { currentUser } = useAuth();
 
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState(null);
@@ -63,11 +65,15 @@ const CategoryPage = () => {
   };
 
   const toggleFavorite = (product) => {
+    if (!currentUser) {
+      alert('Please log in to manage your favorites.');
+      return;
+    }
     const isFavorite = favorites.some(item => item.id === product.id);
     if (isFavorite) {
-      dispatch(removeFromFavorites(product.id));
+      dispatch(removeFavorite({ userId: currentUser.uid, productId: product.id }));
     } else {
-      dispatch(addToFavorites(product));
+      dispatch(addFavorite({ userId: currentUser.uid, product }));
     }
   };
 
