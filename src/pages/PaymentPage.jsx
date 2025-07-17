@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { clearCart } from "../store/slices/cartSlice";
 
@@ -9,11 +9,17 @@ import PaymentMethodSelector from "../components/payment/PaymentMethodSelector";
 import CardDetailsForm from "../components/payment/CardDetailsForm";
 import PaymentOrderSummary from "../components/payment/PaymentOrderSummary";
 import PaymentButton from "../components/payment/PaymentButton";
+import { useAuth } from "../context/AuthContext";
+import { placeOrderThunk } from "../store/slices/orderSlice";
 
 const PaymentPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { totalAmount } = useSelector((state) => state.cart);
+  const location = useLocation();
+  const { currentUser } = useAuth();
+  const cart = useSelector((state) => state.cart);
+  const { totalAmount } = cart;
+  const deliveryInfo = location.state?.deliveryInfo;
 
   const [paymentInfo, setPaymentInfo] = useState({
     paymentMethod: "card",
@@ -102,15 +108,44 @@ const PaymentPage = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!deliveryInfo) {
+      setErrors((prev) => ({
+        ...prev,
+        general:
+          "Delivery information missing. Please go back and fill it out.",
+      }));
+      return;
+    }
     if (validateForm()) {
       setIsProcessing(true);
-      setTimeout(() => {
-        setIsProcessing(false);
+      // Prepare order data
+      const orderData = {
+        deliveryInfo,
+        cart,
+        paymentInfo: {
+          paymentMethod: paymentInfo.paymentMethod,
+          cardHolder: paymentInfo.cardHolder,
+          // Do NOT store card number, cvv, expiry in Firestore!
+        },
+        status: "pending",
+        createdAt: new Date().toISOString(),
+      };
+      try {
+        await dispatch(
+          placeOrderThunk({ uid: currentUser?.uid, orderData })
+        ).unwrap();
         dispatch(clearCart());
+        setIsProcessing(false);
         navigate("/order-confirmation");
-      }, 2000);
+      } catch (err) {
+        setIsProcessing(false);
+        setErrors((prev) => ({
+          ...prev,
+          general: err.message || "Order failed. Please try again.",
+        }));
+      }
     }
   };
 
@@ -147,6 +182,10 @@ const PaymentPage = () => {
             isProcessing={isProcessing}
             totalAmount={totalAmount}
           />
+
+          {errors.general && (
+            <p className="text-center text-red-500 mt-2">{errors.general}</p>
+          )}
 
           <p className="text-center text-sm text-gray-500 mt-4">
             By clicking the button above, you agree to our{" "}

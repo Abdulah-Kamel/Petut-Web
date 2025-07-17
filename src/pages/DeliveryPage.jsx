@@ -70,7 +70,7 @@ const DeliveryPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      navigate("/payment");
+      navigate("/payment", { state: { deliveryInfo } });
     }
   };
 
