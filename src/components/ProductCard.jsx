@@ -1,7 +1,12 @@
-import React, {useEffect} from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
-const ProductCard = ({ product, onAddToCart, onToggleFavorite, isFavorite }) => {
+const ProductCard = ({
+  product,
+  onAddToCart,
+  onToggleFavorite,
+  isFavorite,
+}) => {
   const handleAddToCart = (e) => {
     e.preventDefault();
     if (onAddToCart) {
@@ -27,18 +32,25 @@ const ProductCard = ({ product, onAddToCart, onToggleFavorite, isFavorite }) => 
         </div>
         <div className="p-4 flex flex-col flex-grow">
           <div className="flex justify-between items-start mb-2">
-            <h3 className="font-semibold text-lg truncate mr-2" title={product.name}>
+            <h3
+              className="font-semibold text-lg truncate mr-2"
+              title={product.name}
+            >
               {product.name}
             </h3>
             {onToggleFavorite ? (
               <button
                 onClick={handleToggleFavorite}
-                className={`${isFavorite ? 'text-primary' : 'text-gray-400 hover:text-primary'} focus:outline-none transition-colors flex-shrink-0`}
+                className={`${
+                  isFavorite
+                    ? "text-primary"
+                    : "text-gray-400 hover:text-primary"
+                } focus:outline-none transition-colors flex-shrink-0`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"
-                  fill={isFavorite ? 'currentColor' : 'none'}
+                  fill={isFavorite ? "currentColor" : "none"}
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                   strokeWidth={isFavorite ? 0 : 2}
@@ -56,9 +68,18 @@ const ProductCard = ({ product, onAddToCart, onToggleFavorite, isFavorite }) => 
               </span>
             )}
           </div>
-          <p className="text-sm text-gray-600 mb-3 line-clamp-2 flex-grow min-h-[40px]">{product.description}</p>
+          <p className="text-sm text-gray-600 mb-3 line-clamp-2 flex-grow min-h-[40px]">
+            {product.description}
+          </p>
           <div className="flex justify-between items-center mt-auto">
-            <span className="font-bold text-lg">${product.price.toFixed(2)}</span>
+            <span className="font-bold text-lg">
+              $
+              {typeof product.price === "number"
+                ? product.price.toFixed(2)
+                : typeof product.price === "string"
+                ? parseFloat(product.price).toFixed(2)
+                : "0.00"}
+            </span>
             <button onClick={handleAddToCart} className="btn-primary py-1 px-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

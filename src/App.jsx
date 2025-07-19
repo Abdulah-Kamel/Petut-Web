@@ -27,6 +27,8 @@ import ProfilePage from "./pages/ProfilePage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import FavoritesPage from "./pages/FavoritesPage";
 import OrderDetailsPage from "./pages/OrderDetailsPage";
+import ClinicsScreen from "./pages/ClinicsScreen";
+import ClinicDetailsScreen from "./pages/ClinicDetailsScreen";
 
 function App() {
   const dispatch = useDispatch();
@@ -130,6 +132,8 @@ function App() {
         />
         <Route path="favorites" element={<FavoritesPage />} />
         <Route path="/order/:orderId" element={<OrderDetailsPage />} />
+        <Route path="clinics" element={<ClinicsScreen />} />
+        <Route path="ClinicDetailsScreen" element={<ClinicDetailsScreen />} />
       </Route>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />

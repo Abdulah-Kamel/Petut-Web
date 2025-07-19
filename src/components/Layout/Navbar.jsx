@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { useAuth } from '../../context/AuthContext';
-import { signOut } from 'firebase/auth';
-import { auth } from '../../firebase';
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useAuth } from "../../context/AuthContext";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,9 +14,9 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      navigate('/');
+      navigate("/");
     } catch (error) {
-      console.error('Failed to log out', error);
+      console.error("Failed to log out", error);
     }
   };
 
@@ -49,8 +49,11 @@ const Navbar = () => {
             <Link to="/favorites" className="nav-link">
               Favorites
             </Link>
+            <Link to="/clinics" className="nav-link">
+              Health
+            </Link>
             <button
-              onClick={() => navigate('/cart')}
+              onClick={() => navigate("/cart")}
               className="relative p-2 text-neutral hover:text-primary transition-colors"
             >
               <svg
@@ -76,7 +79,8 @@ const Navbar = () => {
             {currentUser ? (
               <div className="flex items-center space-x-4">
                 <span className="text-neutral hidden lg:inline">
-                  Hi, {currentUser.displayName || currentUser.email.split('@')[0]}
+                  Hi,{" "}
+                  {currentUser.displayName || currentUser.email.split("@")[0]}
                 </span>
                 <Link to="/profile" className="nav-link">
                   <svg
@@ -94,7 +98,10 @@ const Navbar = () => {
                     />
                   </svg>
                 </Link>
-                <button onClick={handleLogout} className="btn-secondary text-sm">
+                <button
+                  onClick={handleLogout}
+                  className="btn-secondary text-sm"
+                >
                   Logout
                 </button>
               </div>
@@ -113,7 +120,7 @@ const Navbar = () => {
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center">
             <button
-              onClick={() => navigate('/cart')}
+              onClick={() => navigate("/cart")}
               className="relative p-2 mr-2 text-neutral hover:text-primary transition-colors"
             >
               <svg
@@ -188,6 +195,12 @@ const Navbar = () => {
                 className="block px-3 py-2 rounded-md text-base font-medium nav-link"
               >
                 Favorites
+              </Link>
+              <Link
+                to="/clinics"
+                className="block px-3 py-2 rounded-md text-base font-medium nav-link"
+              >
+                Health
               </Link>
               {currentUser ? (
                 <>
