@@ -90,14 +90,14 @@ const CartPage = () => {
               <div key={item.id} className="flex border border-gray-200 rounded-lg overflow-hidden">
                 <div className="w-24 h-24 flex-shrink-0">
                   <img 
-                    src={item.imageUrl}
-                    alt={item.name}
+                    src={item.imageURL}
+                    alt={item.productName}
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="flex-1 p-4 flex flex-col">
                   <div className="flex justify-between">
-                    <h3 className="font-semibold">{item.name}</h3>
+                    <h3 className="font-semibold">{item.productName}</h3>
                     <button 
                       onClick={() => handleRemoveItem(item.id)}
                       className="text-gray-400 hover:text-red-500"

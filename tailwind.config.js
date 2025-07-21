@@ -4,32 +4,31 @@ export default {
     "./index.html",
     "./src/**/*.{js,jsx}",
     "./node_modules/flowbite/**/*.js",
-    "./node_modules/flowbite-react/**/*.{js,jsx}"
+    "./node_modules/flowbite-react/**/*.{js,jsx}",
   ],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#FF8D4D',
-          dark: '#5A282B',
+          DEFAULT: "#FF8D4D",
+          dark: "#5A282B",
         },
         secondary: {
-          DEFAULT: '#FFB9A9',
-          light: '#FFEFE9',
+          DEFAULT: "#FFB9A9",
+          light: "#FFEFE9",
         },
         accent: {
-          DEFAULT: '#FF5464',
+          DEFAULT: "#FF5464",
         },
         neutral: {
-          DEFAULT: '#5A282B',
+          DEFAULT: "#5A282B",
         },
       },
       fontFamily: {
-        'exo': ['Exo', 'Exo 2', 'sans-serif'],
+        exo: ["Exo", "Exo 2", "sans-serif"],
       },
     },
   },
-  plugins: [
-    require('flowbite/plugin')
-  ],
-}
+  plugins: [require("flowbite/plugin")],
+};

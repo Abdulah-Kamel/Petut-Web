@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useAuth } from "../../context/AuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
+import DarkModeToggle from "../DarkModeToggle";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -236,6 +237,7 @@ const Navbar = () => {
                   </Link>
                 </>
               )}
+              <DarkModeToggle />
             </div>
           </div>
         )}

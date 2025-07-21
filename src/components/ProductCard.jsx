@@ -25,7 +25,7 @@ const ProductCard = ({
       <Link to={`/product/${product.id}`} className="h-full flex flex-col">
         <div className="relative pb-[100%] overflow-hidden">
           <img
-            src={product.imageUrl}
+            src={product.imageURL}
             alt={product.name}
             className="absolute inset-0 w-full h-full object-contain p-4"
           />
@@ -34,9 +34,9 @@ const ProductCard = ({
           <div className="flex justify-between items-start mb-2">
             <h3
               className="font-semibold text-lg truncate mr-2"
-              title={product.name}
+              title={product.productName}
             >
-              {product.name}
+              {product.productName}
             </h3>
             {onToggleFavorite ? (
               <button
