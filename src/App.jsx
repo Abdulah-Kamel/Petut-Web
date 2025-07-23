@@ -29,6 +29,9 @@ import FavoritesPage from "./pages/FavoritesPage";
 import OrderDetailsPage from "./pages/OrderDetailsPage";
 import ClinicsScreen from "./pages/ClinicsScreen";
 import ClinicDetailsScreen from "./pages/ClinicDetailsScreen";
+import BookingConfirmationPage from "./pages/BookingConfirmationPage";
+import BookingLoadingPage from "./pages/BookingLoadingPage";
+import BookingSuccessPage from "./pages/BookingSuccessPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -134,6 +137,12 @@ function App() {
         <Route path="/order/:orderId" element={<OrderDetailsPage />} />
         <Route path="clinics" element={<ClinicsScreen />} />
         <Route path="ClinicDetailsScreen" element={<ClinicDetailsScreen />} />
+        <Route
+          path="/booking-confirmation"
+          element={<BookingConfirmationPage />}
+        />
+        <Route path="/booking-loading" element={<BookingLoadingPage />} />
+        <Route path="/booking-success" element={<BookingSuccessPage />} />
       </Route>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />
