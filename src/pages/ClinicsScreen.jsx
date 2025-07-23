@@ -35,7 +35,6 @@ const ClinicsScreen = () => {
     return () => unsubscribe();
   }, []);
 
-  
   useEffect(() => {
     if (!navigator.geolocation) return;
     navigator.geolocation.getCurrentPosition(
@@ -48,7 +47,6 @@ const ClinicsScreen = () => {
     );
   }, []);
 
-  
   const filteredClinics = clinics
     .filter((c) => {
       const name = (c.clinicName || "") + (c.doctorName || "");
@@ -83,14 +81,12 @@ const ClinicsScreen = () => {
       return 0;
     });
 
- 
   const handleClinicClick = (clinic) => {
     navigate("/ClinicDetailsScreen", { state: { clinic } });
   };
 
   return (
     <div className="min-h-screen bg-secondary-light">
-  
       <div className="relative bg-primary shadow-lg">
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="relative max-w-6xl mx-auto px-6 py-12 md:py-16">
@@ -117,7 +113,7 @@ const ClinicsScreen = () => {
       </div>
 
       <div className="max-w-6xl mx-auto px-4 md:px-6 -mt-8 relative z-10">
-   <div className="mb-6 md:mb-8 rounded-2xl md:rounded-3xl overflow-hidden shadow-xl md:shadow-2xl bg-white border border-primary">
+        <div className="mb-6 md:mb-8 rounded-2xl md:rounded-3xl overflow-hidden shadow-xl md:shadow-2xl bg-white border border-primary">
           <div className="p-4 md:p-6 bg-gradient-to-r from-primary/5 to-secondary-light">
             <h2 className="text-lg md:text-2xl font-bold text-neutral mb-2 md:mb-4 flex items-center gap-2 md:gap-3">
               <span className="material-icons text-primary text-lg md:text-2xl">
@@ -138,10 +134,9 @@ const ClinicsScreen = () => {
                 onFilterClick={() => setFilterOpen(true)}
               />
             </div>
-            
-        
+            {/* تم حذف القائمة المنسدلة للترتيب */}
           </div>
-       
+
           {!loading && (
             <div className="mt-4 md:mt-6 pt-4 md:pt-6 border-t border-primary">
               <div className="flex items-center justify-between">
@@ -238,8 +233,6 @@ const ClinicsScreen = () => {
         minRating={minRating}
         setMinRating={setMinRating}
       />
-
-     
     </div>
   );
 };

@@ -124,7 +124,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-
+          
           {/* Contact Info */}
           <div>
             <h3 className="text-xl font-bold text-neutral mb-6">Contact Us</h3>
@@ -178,7 +178,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-
+        
         {/* Bottom Section */}
         <div className="border-t border-gray-200 pt-8">
           <div className="flex justify-center">

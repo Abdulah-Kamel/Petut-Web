@@ -24,7 +24,7 @@ const FilterModal = ({
         <div className="mb-4">
           <div className="font-semibold mb-2 text-primary">Sort by:</div>
           <div className="flex flex-col gap-2">
-            <label className="flex items-center gap-2 text-secondary">
+            <label className="flex items-center gap-2 text-black">
               <input
                 type="radio"
                 name="sortBy"
@@ -35,7 +35,7 @@ const FilterModal = ({
               />
               Nearest
             </label>
-            <label className="flex items-center gap-2 text-secondary">
+            <label className="flex items-center gap-2 text-black">
               <input
                 type="radio"
                 name="sortBy"
@@ -46,7 +46,7 @@ const FilterModal = ({
               />
               Price (Low to High)
             </label>
-            <label className="flex items-center gap-2 text-secondary">
+            <label className="flex items-center gap-2 text-black">
               <input
                 type="radio"
                 name="sortBy"
