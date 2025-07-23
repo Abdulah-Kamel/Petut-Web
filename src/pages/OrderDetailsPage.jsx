@@ -64,14 +64,14 @@ const OrderDetailsPage = () => {
           {cart?.items?.map((item) => (
             <div key={item.id} className="flex items-center pb-4 border-b border-gray-200 last:border-b-0">
               <div className="w-16 h-16 bg-gray-200 rounded-md overflow-hidden mr-4">
-                {item.imageUrl ? (
-                  <img src={item.imageUrl} alt={item.name} className="w-full h-full object-cover" />
+                {item.imageURL ? (
+                  <img src={item.imageURL} alt={item.productName} className="w-full h-full object-cover" />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-gray-400">No Image</div>
                 )}
               </div>
               <div className="flex-1">
-                <h3 className="font-medium">{item.name}</h3>
+                <h3 className="font-medium">{item.productName}</h3>
                 <div className="flex justify-between mt-1">
                   <span className="text-sm">Qty: {item.quantity}</span>
                   <span className="font-medium">{item.totalPrice?.toFixed(2)} €</span>

@@ -48,7 +48,7 @@ const OrdersTab = ({ orders, loading, error }) => {
               key={order.id}
               className="border border-gray-200 rounded-lg overflow-hidden"
             >
-              <div className="bg-gray-50 p-4 flex flex-wrap justify-between items-center">
+              <div className="bg-gray-50 p-4 flex flex-wrap max-md:flex-col max-md:items-start justify-between items-center">
                 <div>
                   <span className="text-sm text-gray-600">Order ID:</span>
                   <span className="ml-2 font-mono font-medium">{order.id}</span>
@@ -88,8 +88,13 @@ const OrdersTab = ({ orders, loading, error }) => {
                       key={index}
                       className="flex justify-between items-center"
                     >
+                      <img
+                        src={item.imageURL}
+                        alt={item.productName}
+                        className="w-16 h-16 object-cover rounded-lg"
+                      />
                       <div className="flex items-center">
-                        <span className="font-medium">{item.name}</span>
+                        <span className="font-medium">{item.productName}</span>
                         <span className="ml-2 text-sm text-gray-600">
                           x{item.quantity}
                         </span>

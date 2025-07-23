@@ -83,45 +83,67 @@ const ProductPage = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
         {/* Product Image */}
         <div className="bg-white p-4 rounded-lg shadow-md flex items-center justify-center">
-          <img 
-            src={product.imageUrl}
-            alt={product.name} 
+          <img
+            src={product.imageURL}
+            alt={product.productName}
             className="max-w-full h-auto object-contain max-h-96"
           />
         </div>
 
         {/* Product Info */}
         <div className="flex flex-col justify-center">
-          <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
+          <h1 className="text-3xl font-bold mb-2">{product.productName}</h1>
           <div className="flex items-center mb-4">
             <div className="flex items-center mr-4">
-              <svg className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+              <svg
+                className="w-5 h-5 text-yellow-400 fill-current"
+                viewBox="0 0 20 20"
+              >
+                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
               </svg>
-              <span className="text-lg text-gray-700 ml-1">{product.rating?.rate || 'N/A'}</span>
+              <span className="text-lg text-gray-700 ml-1">
+                {product.rate || "N/A"}
+              </span>
             </div>
-            <span className="text-gray-500">({product.rating?.count || 0} reviews)</span>
           </div>
           <p className="text-gray-600 mb-6">{product.description}</p>
-          
+
           <div className="flex items-center mb-6">
-            <span className="text-3xl font-bold text-primary mr-4">${product.price.toFixed(2)}</span>
-            <span className='text-sm px-3 py-1 rounded-full bg-green-100 text-green-800 font-semibold'>In Stock</span>
+            <span className="text-3xl font-bold text-primary mr-4">
+              ${product.price.toFixed(2)}
+            </span>
+            <span className="text-sm px-3 py-1 rounded-full bg-green-100 text-green-800 font-semibold">
+              In Stock
+            </span>
           </div>
 
           <div className="flex items-center space-x-4">
-            <button 
+            <button
               onClick={() => dispatch(addToCart(product))}
               className="btn-primary flex-grow"
             >
               Add to Cart
             </button>
-            <button 
+            <button
               onClick={handleToggleFavorite}
-              className={`p-3 rounded-full border-2 ${isFavorite ? 'bg-primary text-white border-primary' : 'bg-white text-gray-500 border-gray-300'} hover:border-primary transition-colors`}
+              className={`p-3 rounded-full border-2 ${
+                isFavorite
+                  ? "bg-primary text-white border-primary"
+                  : "bg-white text-gray-500 border-gray-300"
+              } hover:border-primary transition-colors`}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={isFavorite ? 0 : 2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={isFavorite ? 0 : 2}
+                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                />
               </svg>
             </button>
           </div>
@@ -133,26 +155,47 @@ const ProductPage = () => {
         <div>
           <h2 className="text-2xl font-bold mb-6">Related Products</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {relatedProducts.map(relatedProduct => (
-              <div key={relatedProduct.id} className="card hover:shadow-lg transition-shadow">
+            {relatedProducts.map((relatedProduct) => (
+              <div
+                key={relatedProduct.id}
+                className="card hover:shadow-lg transition-shadow"
+              >
                 <Link to={`/product/${relatedProduct.id}`}>
                   <div className="relative pb-[100%] overflow-hidden">
-                    <img 
-                      src={relatedProduct.imageUrl}
-                      alt={relatedProduct.name}
+                    <img
+                      src={relatedProduct.imageURL}
+                      alt={relatedProduct.productName}
                       className="absolute inset-0 w-full h-full object-contain"
                     />
                   </div>
                 </Link>
                 <div className="p-4">
-                  <h3 className="font-semibold text-lg truncate" title={relatedProduct.name}>
-                    <Link to={`/product/${relatedProduct.id}`}>{relatedProduct.name}</Link>
+                  <h3
+                    className="font-semibold text-lg truncate"
+                    title={relatedProduct.productName}
+                  >
+                    <Link to={`/product/${relatedProduct.id}`}>
+                      {relatedProduct.productName}
+                    </Link>
                   </h3>
                   <div className="flex justify-between items-center mt-2">
-                    <span className="font-bold text-lg">${relatedProduct.price.toFixed(2)}</span>
+                    <span className="font-bold text-lg">
+                      ${relatedProduct.price.toFixed(2)}
+                    </span>
                     <button className="btn-primary py-1 px-3">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                        />
                       </svg>
                     </button>
                   </div>
