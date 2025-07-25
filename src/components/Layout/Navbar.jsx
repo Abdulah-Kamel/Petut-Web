@@ -26,13 +26,13 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
+    <nav className="bg-white dark:bg-[#313340] shadow-md fixed top-0 left-0 right-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <span className="text-xl font-bold text-primary">
-              PET<span className="text-neutral">.CARE</span>
+              PET<span className="text-neutral dark:text-white">.CARE</span>
             </span>
           </Link>
 
@@ -53,68 +53,69 @@ const Navbar = () => {
             <Link to="/clinics" className="nav-link">
               Health
             </Link>
+          </div>
+          {/* User Actions */}
+          <div className="flex items-center space-x-4">
             <button
-              onClick={() => navigate("/cart")}
-              className="relative p-2 text-neutral hover:text-primary transition-colors"
+                onClick={() => navigate("/cart")}
+                className="relative p-2 text-neutral dark:text-white hover:text-primary dark:hover:text-primary transition-colors"
             >
               <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
               >
                 <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                 />
               </svg>
               {totalQuantity > 0 && (
-                <span className="absolute -top-1 -right-1 bg-primary text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 bg-primary text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
                   {totalQuantity}
                 </span>
               )}
             </button>
+            <DarkModeToggle/>
+
             {currentUser ? (
-              <div className="flex items-center space-x-4">
-                <span className="text-neutral hidden lg:inline">
-                  Hi,{" "}
-                  {currentUser.displayName || currentUser.email.split("@")[0]}
-                </span>
-                <Link to="/profile" className="nav-link">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+                <div className="flex items-center space-x-4">
+                  <Link to="/profile" className="nav-link">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                      <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                      />
+                    </svg>
+                  </Link>
+                  <button
+                      onClick={handleLogout}
+                      className="btn-secondary text-sm"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                    />
-                  </svg>
-                </Link>
-                <button
-                  onClick={handleLogout}
-                  className="btn-secondary text-sm"
-                >
-                  Logout
-                </button>
-              </div>
+                    Logout
+                  </button>
+                </div>
             ) : (
-              <div className="flex items-center space-x-2">
-                <Link to="/login" className="btn-primary text-sm">
-                  Log In
-                </Link>
-                <Link to="/signup" className="btn-secondary text-sm">
-                  Sign Up
-                </Link>
-              </div>
+                <div className="flex items-center space-x-2">
+                  <Link to="/login" className="btn-primary text-sm">
+                    Log In
+                  </Link>
+                  <Link to="/signup" className="btn-secondary text-sm">
+                    Sign Up
+                  </Link>
+                </div>
             )}
           </div>
 

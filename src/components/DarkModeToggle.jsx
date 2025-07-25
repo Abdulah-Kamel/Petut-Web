@@ -35,7 +35,7 @@ const DarkModeToggle = () => {
     <button
       onClick={toggleDarkMode}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      className="p-2 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-gray-600 transition"
+      className="p-2 rounded  text-gray-800 dark:text-white hover:text-primary  dark:hover:text-primary transition-colors"
     >
       {isDark ? (
         // Sun icon
