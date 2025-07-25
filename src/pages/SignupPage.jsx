@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { signInWithGoogle,auth, db  } from '../firebase'
-import { doc, setDoc,serverTimestamp } from 'firebase/firestore'
+import { doc, setDoc,serverTimestamp,getDoc } from 'firebase/firestore'
 
 const SignupPage = () => {
   const navigate = useNavigate()
@@ -137,9 +137,21 @@ const SignupPage = () => {
     setLoading(true);
     setError('');
     try {
-      await signInWithGoogle();
-      navigate('/');
+      const result = await signInWithGoogle();
+      const user = result.user;
+
+      // Check if user already has profile in Firestore
+      const userDocRef = doc(db, "users", user.uid);
+      const userDocSnap = await getDoc(userDocRef);
+
+      if (!userDocSnap.exists()) {
+        // Redirect to completion form
+        navigate(`/complete-profile?uid=${user.uid}`);
+      } else {
+        navigate('/');
+      }
     } catch (err) {
+      console.error(err);
       setError('Failed to sign up with Google. Please try again.');
       console.error(err);
     } finally {
