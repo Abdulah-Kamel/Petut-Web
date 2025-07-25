@@ -2,17 +2,17 @@ import React from 'react';
 
 const SettingsTab = () => {
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-6">
-      <h2 className="text-2xl font-bold mb-6">Settings</h2>
+    <div className="bg-white dark:bg-[#313340] rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+      <h2 className="text-2xl dark:text-white font-bold mb-6">Settings</h2>
       
       <div className="space-y-6">
         <div>
-          <h3 className="text-lg font-semibold mb-3">Notifications</h3>
+          <h3 className="text-lg dark:text-white font-semibold mb-3">Notifications</h3>
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <div>
-                <p className="font-medium">Email Notifications</p>
-                <p className="text-sm text-gray-600">Receive order updates and promotions</p>
+                <p className="font-medium dark:text-gray-300">Email Notifications</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Receive order updates and promotions</p>
               </div>
               <label className="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" className="sr-only peer" defaultChecked />
@@ -22,8 +22,8 @@ const SettingsTab = () => {
             
             <div className="flex items-center justify-between">
               <div>
-                <p className="font-medium">SMS Notifications</p>
-                <p className="text-sm text-gray-600">Receive order status updates via SMS</p>
+                <p className="font-medium dark:text-gray-300">SMS Notifications</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Receive order status updates via SMS</p>
               </div>
               <label className="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" className="sr-only peer" />
@@ -33,8 +33,8 @@ const SettingsTab = () => {
             
             <div className="flex items-center justify-between">
               <div>
-                <p className="font-medium">Marketing Communications</p>
-                <p className="text-sm text-gray-600">Receive offers and promotions</p>
+                <p className="font-medium dark:text-gray-300">Marketing Communications</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Receive offers and promotions</p>
               </div>
               <label className="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" className="sr-only peer" defaultChecked />
@@ -44,13 +44,13 @@ const SettingsTab = () => {
           </div>
         </div>
         
-        <div className="border-t border-gray-200 pt-6">
-          <h3 className="text-lg font-semibold mb-3">Privacy</h3>
+        <div className="border-t border-gray-200 dark:border-gray-500 pt-6">
+          <h3 className="text-lg font-semibold mb-3 dark:text-white">Privacy</h3>
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <div>
-                <p className="font-medium">Show Profile Picture</p>
-                <p className="text-sm text-gray-600">Your profile picture will be visible to other users</p>
+                <p className="font-medium dark:text-gray-300">Show Profile Picture</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Your profile picture will be visible to other users</p>
               </div>
               <label className="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" className="sr-only peer" defaultChecked />
@@ -60,8 +60,8 @@ const SettingsTab = () => {
             
             <div className="flex items-center justify-between">
               <div>
-                <p className="font-medium">Data Collection</p>
-                <p className="text-sm text-gray-600">Allow us to collect usage data to improve our services</p>
+                <p className="font-medium dark:text-white">Data Collection</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Allow us to collect usage data to improve our services</p>
               </div>
               <label className="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" className="sr-only peer" defaultChecked />
@@ -72,7 +72,7 @@ const SettingsTab = () => {
         </div>
         
         <div className="border-t border-gray-200 pt-6">
-          <h3 className="text-lg font-semibold mb-3">Account</h3>
+          <h3 className="text-lg font-semibold mb-3 dark:text-white">Account</h3>
           <div className="space-y-4">
             <button className="text-primary hover:underline">
               Download My Data
@@ -81,7 +81,7 @@ const SettingsTab = () => {
               <button className="text-red-500 hover:underline">
                 Delete My Account
               </button>
-              <p className="text-sm text-gray-600 mt-1">
+              <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
                 This action cannot be undone. All your data will be permanently deleted.
               </p>
             </div>

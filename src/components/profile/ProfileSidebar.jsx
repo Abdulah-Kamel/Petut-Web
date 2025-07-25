@@ -32,8 +32,8 @@ const ProfileSidebar = ({
 
   return (
     <div className="md:w-1/4">
-      <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
-        <div className="p-6 text-center border-b border-gray-200">
+      <div className="bg-white dark:bg-[#313340] rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+        <div className="p-6 text-center border-b border-gray-200 dark:border-gray-300">
           <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-4">
             <img
               src={
@@ -45,10 +45,10 @@ const ProfileSidebar = ({
               className="w-full h-full object-cover"
             />
           </div>
-          <h2 className="text-xl font-bold">
+          <h2 className="text-xl dark:text-white font-bold">
             {currentUser?.displayName || "User"}
           </h2>
-          <p className="text-gray-600">
+          <p className="text-gray-600 dark:text-gray-300">
             {currentUser?.email || "user@example.com"}
           </p>
         </div>
@@ -62,7 +62,7 @@ const ProfileSidebar = ({
                 className={`w-full flex items-center px-4 py-3 rounded-lg transition-colors ${
                   activeTab === item.id
                     ? "bg-primary text-white"
-                    : "hover:bg-gray-100"
+                    : "hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white"
                 }`}
               >
                 {item.icon}
@@ -72,7 +72,7 @@ const ProfileSidebar = ({
 
             <button
               onClick={handleLogout}
-              className="w-full flex items-center px-4 py-3 text-red-500 rounded-lg hover:bg-red-50 transition-colors"
+              className="w-full flex items-center px-4 py-3 text-red-500 rounded-lg hover:bg-red-50 dark:hover:bg-red-500 dark:text-white transition-colors"
             >
               <LogoutIcon />
               <span>Logout</span>

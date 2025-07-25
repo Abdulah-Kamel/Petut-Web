@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-b from-white to-gray-50 shadow-lg pt-16 pb-12">
+    <footer className=" bg-white dark:bg-[#313340] shadow-lg pt-16 pb-12">
       <div className="container mx-auto px-6">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
@@ -10,17 +10,17 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <div className="flex items-center mb-6">
               <span className="text-3xl font-bold text-primary">
-                PET<span className="text-neutral">.CARE</span>
+                PET<span className="text-neutral dark:text-white">.CARE</span>
               </span>
             </div>
-            <p className="text-gray-600 mb-6 leading-relaxed text-base">
+            <p className="text-gray-400 dark:text-gray-300 mb-6 leading-relaxed text-base">
               Your trusted partner in pet care. We provide premium products and
               services to ensure your pets live happy, healthy lives.
             </p>
             <div className="flex space-x-5">
               <a
                 href="#"
-                className="text-gray-400 hover:text-primary transition-all duration-300 transform hover:scale-110"
+                className="text-gray-400 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-all duration-300 transform hover:scale-110"
               >
                 <svg
                   className="w-6 h-6"
@@ -32,7 +32,7 @@ const Footer = () => {
               </a>
               <a
                 href="#"
-                className="text-gray-400 hover:text-primary transition-all duration-300 transform hover:scale-110"
+                className="text-gray-400 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-all duration-300 transform hover:scale-110"
               >
                 <svg
                   className="w-6 h-6"
@@ -44,7 +44,7 @@ const Footer = () => {
               </a>
               <a
                 href="#"
-                className="text-gray-400 hover:text-primary transition-all duration-300 transform hover:scale-110"
+                className="text-gray-400 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-all duration-300 transform hover:scale-110"
               >
                 <svg
                   className="w-6 h-6"
@@ -56,7 +56,7 @@ const Footer = () => {
               </a>
               <a
                 href="#"
-                className="text-gray-400 hover:text-primary transition-all duration-300 transform hover:scale-110"
+                className="text-gray-400 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-all duration-300 transform hover:scale-110"
               >
                 <svg
                   className="w-6 h-6"
@@ -71,25 +71,25 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-xl font-bold text-neutral mb-6">Quick Links</h3>
+            <h3 className="text-xl font-bold text-neutral dark:text-white mb-6">Quick Links</h3>
             <ul className="space-y-4">
               <li>
-                <button className="text-gray-600 hover:text-primary transition-all duration-300 text-base font-medium bg-transparent border-none p-0 cursor-pointer">
+                <button className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-all duration-300 text-base font-medium bg-transparent border-none p-0 cursor-pointer">
                   About Us
                 </button>
               </li>
               <li>
-                <button className="text-gray-600 hover:text-primary transition-all duration-300 text-base font-medium bg-transparent border-none p-0 cursor-pointer">
+                <button className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-all duration-300 text-base font-medium bg-transparent border-none p-0 cursor-pointer">
                   Our Services
                 </button>
               </li>
               <li>
-                <button className="text-gray-600 hover:text-primary transition-all duration-300 text-base font-medium bg-transparent border-none p-0 cursor-pointer">
+                <button className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-all duration-300 text-base font-medium bg-transparent border-none p-0 cursor-pointer">
                   Pet Care Tips
                 </button>
               </li>
               <li>
-                <button className="text-gray-600 hover:text-primary transition-all duration-300 text-base font-medium bg-transparent border-none p-0 cursor-pointer">
+                <button className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-all duration-300 text-base font-medium bg-transparent border-none p-0 cursor-pointer">
                   Veterinary Care
                 </button>
               </li>
@@ -98,27 +98,27 @@ const Footer = () => {
 
           {/* Customer Service */}
           <div>
-            <h3 className="text-xl font-bold text-neutral mb-6">
+            <h3 className="text-xl font-bold text-neutral dark:text-white mb-6">
               Customer Service
             </h3>
             <ul className="space-y-4">
               <li>
-                <button className="text-gray-600 hover:text-primary transition-all duration-300 text-base font-medium bg-transparent border-none p-0 cursor-pointer">
+                <button className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-all duration-300 text-base font-medium bg-transparent border-none p-0 cursor-pointer">
                   My Account
                 </button>
               </li>
               <li>
-                <button className="text-gray-600 hover:text-primary transition-all duration-300 text-base font-medium bg-transparent border-none p-0 cursor-pointer">
+                <button className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-all duration-300 text-base font-medium bg-transparent border-none p-0 cursor-pointer">
                   Order Tracking
                 </button>
               </li>
               <li>
-                <button className="text-gray-600 hover:text-primary transition-all duration-300 text-base font-medium bg-transparent border-none p-0 cursor-pointer">
+                <button className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-all duration-300 text-base font-medium bg-transparent border-none p-0 cursor-pointer">
                   Returns & Refunds
                 </button>
               </li>
               <li>
-                <button className="text-gray-600 hover:text-primary transition-all duration-300 text-base font-medium bg-transparent border-none p-0 cursor-pointer">
+                <button className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-all duration-300 text-base font-medium bg-transparent border-none p-0 cursor-pointer">
                   Help Center
                 </button>
               </li>
@@ -127,7 +127,7 @@ const Footer = () => {
           
           {/* Contact Info */}
           <div>
-            <h3 className="text-xl font-bold text-neutral mb-6">Contact Us</h3>
+            <h3 className="text-xl font-bold text-neutral dark:text-white mb-6">Contact Us</h3>
             <div className="space-y-4">
               <div className="flex items-start space-x-4">
                 <svg
@@ -150,10 +150,10 @@ const Footer = () => {
                   />
                 </svg>
                 <div>
-                  <p className="text-gray-600 font-medium">
+                  <p className="text-gray-600 dark:text-gray-300 font-medium">
                     123 Pet Care Street
                   </p>
-                  <p className="text-gray-600">Cairo, Egypt</p>
+                  <p className="text-gray-600 dark:text-gray-300">Cairo, Egypt</p>
                 </div>
               </div>
               <div className="flex items-start space-x-4">
@@ -171,8 +171,8 @@ const Footer = () => {
                   />
                 </svg>
                 <div>
-                  <p className="text-gray-600 font-medium">+20 123 456 7890</p>
-                  <p className="text-gray-600">support@petcare.com</p>
+                  <p className="text-gray-600 dark:text-gray-300 font-medium">+20 123 456 7890</p>
+                  <p className="text-gray-600 dark:text-gray-300">support@petcare.com</p>
                 </div>
               </div>
             </div>
@@ -186,13 +186,13 @@ const Footer = () => {
             <div className="flex flex-col items-center">
               <div className="flex items-center mb-4">
                 <span className="text-2xl font-bold text-primary">
-                  PET<span className="text-neutral">.CARE</span>
+                  PET<span className="text-neutral dark:text-white">.CARE</span>
                 </span>
               </div>
-              <p className="text-gray-500 mb-3 font-medium">
+              <p className="text-gray-500 dark:text-gray-300 mb-3 font-medium">
                 Taking care of your pet
               </p>
-              <p className="text-gray-400 text-sm">
+              <p className="text-gray-400  dark:text-gray-300 text-sm">
                 &copy; {new Date().getFullYear()} PET.CARE. All rights reserved.
               </p>
             </div>

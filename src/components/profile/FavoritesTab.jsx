@@ -17,8 +17,8 @@ const FavoritesTab = () => {
   };
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-6">
-      <h2 className="text-2xl font-bold mb-6">My Favorites</h2>
+    <div className="bg-white dark:bg-[#313340] rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+      <h2 className="text-2xl dark:text-white font-bold mb-6">My Favorites</h2>
 
       {status === "loading" && <p>Loading favorites...</p>}
       {status === "failed" && <p className="text-red-500">Error: {error}</p>}
@@ -40,7 +40,7 @@ const FavoritesTab = () => {
             />
           </svg>
           <h3 className="text-xl font-semibold mb-2">No favorites yet</h3>
-          <p className="text-gray-600 mb-6">
+          <p className="text-gray-600 dark:text-gray-300 mb-6">
             Your favorite products will appear here.
           </p>
           <Link
@@ -72,7 +72,7 @@ const FavoritesTab = () => {
                 </div>
                 <div className="p-4 flex-grow flex flex-col">
                   <div className="flex justify-between items-start mb-2">
-                    <h3 className="font-semibold text-lg flex-grow pr-2">
+                    <h3 className="font-semibold text-lg flex-grow pr-2 dark:text-white">
                       {product.productName}
                     </h3>
                     <button
@@ -94,7 +94,7 @@ const FavoritesTab = () => {
                       </svg>
                     </button>
                   </div>
-                  <p className="text-sm text-gray-600 mb-3 flex-grow">
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-3 flex-grow">
                     {product.description}
                   </p>
                 </div>

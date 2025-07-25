@@ -105,8 +105,8 @@ const ProfileForm = ({ currentUser }) => {
   };
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-6">
-      <h2 className="text-2xl font-bold mb-6">My Profile</h2>
+    <div className="bg-white dark:bg-[#313340] rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+      <h2 className="text-2xl dark:text-white font-bold mb-6">My Profile</h2>
       <form className="space-y-6" onSubmit={handleProfileSave}>
         {/* Image upload */}
         <div className="flex max-lg:flex-col items-center space-x-4 mb-4">
@@ -118,7 +118,7 @@ const ProfileForm = ({ currentUser }) => {
                 className="w-28 h-28 rounded-full object-cover border"
               />
             ) : (
-              <div className="w-20 h-20 rounded-full bg-gray-200 flex items-center justify-center text-gray-400">
+              <div className="w-20 h-20 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-400 dark:text-gray-300">
                 No Image
               </div>
             )}
@@ -128,7 +128,7 @@ const ProfileForm = ({ currentUser }) => {
               type="file"
               accept="image/*"
               onChange={handleImageChange}
-              className="max-lg:w-full py-3 px-8 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer hover:bg-gray-50 hover:ring-1 hover:ring-primary"
+              className="max-lg:w-full py-3 px-8 border dark:text-white border-gray-300 dark:border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-600 hover:ring-1 hover:ring-primary"
             />
           </div>
         </div>
@@ -136,7 +136,7 @@ const ProfileForm = ({ currentUser }) => {
           <div>
             <label
               htmlFor="fullName"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-medium text-gray-700 dark:text-white  mb-1"
             >
               Full Name
             </label>
@@ -146,13 +146,13 @@ const ProfileForm = ({ currentUser }) => {
               name="fullName"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
+              className="w-full p-3 dark:bg-[#313340] dark:text-white border border-gray-300 dark:border-gray-400 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
             />
           </div>
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-medium text-gray-700 dark:text-white mb-1"
             >
               Email Address
             </label>
@@ -162,13 +162,13 @@ const ProfileForm = ({ currentUser }) => {
               name="email"
               value={email}
               disabled
-              className="w-full p-3 border border-gray-300 rounded-lg bg-gray-100 focus:outline-none focus:ring-1 focus:ring-primary"
+              className="w-full p-3 dark:bg-[#313340] dark:text-white border border-gray-300 dark:border-gray-400 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
             />
           </div>
           <div>
             <label
               htmlFor="phone"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-medium text-gray-700 dark:text-white mb-1"
             >
               Phone Number
             </label>
@@ -179,13 +179,13 @@ const ProfileForm = ({ currentUser }) => {
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder=""
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
+              className="w-full p-3 dark:bg-[#313340] dark:text-white border border-gray-300 dark:border-gray-400 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
             />
           </div>
           <div>
             <label
               htmlFor="birthdate"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-medium text-gray-700 dark:text-white mb-1"
             >
               Date of Birth
             </label>
@@ -196,7 +196,7 @@ const ProfileForm = ({ currentUser }) => {
               value={birthdate}
               onChange={(e) => setBirthdate(e.target.value)}
               placeholder=""
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
+              className="w-full p-3 dark:bg-[#313340] dark:text-white border border-gray-300 dark:border-gray-400 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
             />
           </div>
         </div>
@@ -213,12 +213,12 @@ const ProfileForm = ({ currentUser }) => {
           </button>
         </div>
         <div>
-          <h3 className="text-lg font-semibold mb-3">Change Password</h3>
+          <h3 className="text-lg dark:text-white font-semibold mb-3">Change Password</h3>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-end">
             <div>
               <label
                 htmlFor="currentPassword"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="block text-sm font-medium text-gray-700 dark:text-white mb-1"
               >
                 Current Password
               </label>
@@ -228,13 +228,13 @@ const ProfileForm = ({ currentUser }) => {
                 name="currentPassword"
                 value={currentPassword}
                 onChange={(e) => setCurrentPassword(e.target.value)}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
+                className="w-full p-3 dark:bg-[#313340] dark:text-white border border-gray-300 dark:border-gray-400 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
               />
             </div>
             <div>
               <label
                 htmlFor="newPassword"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="block text-sm font-medium text-gray-700 dark:text-white mb-1"
               >
                 New Password
               </label>
@@ -244,13 +244,13 @@ const ProfileForm = ({ currentUser }) => {
                 name="newPassword"
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
+                className="w-full p-3 dark:bg-[#313340] dark:text-white border border-gray-300 dark:border-gray-400 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
               />
             </div>
             <div>
               <label
                 htmlFor="confirmPassword"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="block text-sm font-medium text-gray-700 dark:text-white mb-1"
               >
                 Confirm New Password
               </label>
@@ -260,7 +260,7 @@ const ProfileForm = ({ currentUser }) => {
                 name="confirmPassword"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
+                className="w-full p-3 dark:bg-[#313340] dark:text-white border border-gray-300 dark:border-gray-400 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
               />
             </div>
             <div className="flex md:block justify-end w-full mt-4 md:mt-0">
@@ -275,7 +275,7 @@ const ProfileForm = ({ currentUser }) => {
             </div>
           </div>
           {passwordMsg && (
-            <div className="text-green-600 font-medium mt-2">{passwordMsg}</div>
+            <div className={`${passwordMsg === "Password updated successfully!" ?  "text-green-600" : "text-red-600"} font-medium mt-2`}>{passwordMsg}</div>
           )}
         </div>
       </form>
