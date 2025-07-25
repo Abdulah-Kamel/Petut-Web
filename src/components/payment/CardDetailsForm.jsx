@@ -2,7 +2,7 @@ import React from 'react';
 
 const FormInput = ({ id, name, label, value, onChange, error, type = 'text', placeholder, maxLength }) => (
   <div>
-    <label htmlFor={id} className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
+    <label htmlFor={id} className="block text-sm font-medium text-gray-700 dark:text-white mb-1">{label}</label>
     <input
       type={type}
       id={id}
@@ -10,7 +10,7 @@ const FormInput = ({ id, name, label, value, onChange, error, type = 'text', pla
       value={value}
       onChange={onChange}
       placeholder={placeholder}
-      className={`w-full p-3 border ${error ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-none focus:ring-1 focus:ring-primary`}
+      className={`w-full p-3 border ${error ? 'border-red-500' : 'border-gray-300'} dark:border-gray-500 dark:bg-[#313340] dark:text-white dark:placeholder:text-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary`}
       maxLength={maxLength}
     />
     {error && <p className="mt-1 text-sm text-red-500">{error}</p>}
@@ -21,8 +21,8 @@ const CardDetailsForm = ({ paymentInfo, errors, handleChange, handleCardNumberCh
   if (paymentInfo.paymentMethod !== 'card') return null;
 
   return (
-    <div className="mb-6 bg-white rounded-lg border border-gray-200 p-4">
-      <h2 className="text-lg font-semibold mb-4">Card Details</h2>
+    <div className="mb-6 bg-white dark:bg-[#313340] rounded-lg border border-gray-200 dark:border-gray-700 p-4">
+      <h2 className="text-lg dark:text-white font-semibold mb-4">Card Details</h2>
       <div className="space-y-4">
         <FormInput
           id="cardNumber"
@@ -75,7 +75,7 @@ const CardDetailsForm = ({ paymentInfo, errors, handleChange, handleCardNumberCh
             onChange={handleChange}
             className="h-4 w-4 text-primary focus:ring-primary rounded"
           />
-          <label htmlFor="saveCard" className="ml-2 text-sm text-gray-700">
+          <label htmlFor="saveCard" className="ml-2 text-sm text-gray-700 dark:text-gray-300">
             Save this card for future payments
           </label>
         </div>

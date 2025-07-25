@@ -3,12 +3,12 @@ import React from 'react';
 const PaymentMethodSelector = ({ paymentMethods, selectedMethod, handleChange }) => {
   return (
     <div className="mb-6">
-      <h2 className="text-lg font-semibold mb-4">Payment Method</h2>
+      <h2 className="text-lg dark:text-white font-semibold mb-4">Payment Method</h2>
       <div className="space-y-3">
         {paymentMethods.map(method => (
           <label 
-            key={method.id} 
-            className={`block p-4 border rounded-lg cursor-pointer transition-colors ${selectedMethod === method.id ? 'border-primary bg-primary/5' : 'border-gray-200 hover:bg-gray-50'}`}
+            key={method.id}
+            className={`block p-4 border rounded-lg cursor-pointer transition-colors ${selectedMethod === method.id ? 'border-primary bg-primary' : 'border-gray-200 hover:bg-primary hover:text-white'} bg-white dark:border-gray-700 dark:hover:bg-gray-600 dark:bg-[#313340] dark:text-white dark:hover:text-white`}
           >
             <div className="flex items-center">
               <input

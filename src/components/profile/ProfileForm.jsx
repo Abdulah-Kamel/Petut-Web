@@ -12,8 +12,8 @@ const ProfileForm = ({ currentUser }) => {
   const { authUser } = useAuth ? useAuth() : { authUser: null };
   const [fullName, setFullName] = useState(currentUser?.displayName || "");
   const [email] = useState(currentUser?.email || "");
+  const [gender] = useState(currentUser?.gender || "");
   const [phone, setPhone] = useState("");
-  const [birthdate, setBirthdate] = useState(""); // Not stored in Auth
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -58,8 +58,8 @@ const ProfileForm = ({ currentUser }) => {
         // Save to Firestore
         await setUserProfile(currentUser.uid, {
           phone,
-          birthdate,
           profileImage,
+          gender,
         });
         // Optionally update displayName in Auth
         await updateProfile(currentUser, {
@@ -178,23 +178,6 @@ const ProfileForm = ({ currentUser }) => {
               name="phone"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              placeholder=""
-              className="w-full p-3 dark:bg-[#313340] dark:text-white border border-gray-300 dark:border-gray-400 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="birthdate"
-              className="block text-sm font-medium text-gray-700 dark:text-white mb-1"
-            >
-              Date of Birth
-            </label>
-            <input
-              type="date"
-              id="birthdate"
-              name="birthdate"
-              value={birthdate}
-              onChange={(e) => setBirthdate(e.target.value)}
               placeholder=""
               className="w-full p-3 dark:bg-[#313340] dark:text-white border border-gray-300 dark:border-gray-400 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
             />

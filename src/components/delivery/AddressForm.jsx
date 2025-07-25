@@ -2,14 +2,14 @@ import React from 'react';
 
 const FormInput = ({ id, name, label, value, onChange, error, type = 'text', placeholder }) => (
   <div>
-    <label htmlFor={id} className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
+    <label htmlFor={id} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{label}</label>
     <input
       type={type}
       id={id}
       name={name}
       value={value}
       onChange={onChange}
-      className={`w-full p-3 border ${error ? 'border-red-500' : 'border-gray-300'} rounded-lg focus:outline-none focus:ring-1 focus:ring-primary`}
+      className={`w-full p-3 border ${error ? 'border-red-500' : 'border-gray-300'} dark:border-gray-500 dark:bg-[#313340] dark:text-white dark:placeholder:text-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary`}
       placeholder={placeholder}
     />
     {error && <p className="mt-1 text-sm text-red-500">{error}</p>}
@@ -19,7 +19,7 @@ const FormInput = ({ id, name, label, value, onChange, error, type = 'text', pla
 const AddressForm = ({ deliveryInfo, handleChange, errors }) => {
   return (
     <div className="mb-6">
-      <h2 className="text-lg font-semibold mb-4">Delivery Address</h2>
+      <h2 className="text-lg dark:text-white font-semibold mb-4">Delivery Address</h2>
       <div className="space-y-4">
         <FormInput
           id="address"
