@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserOrders, clearLastOrderId } from "../store/slices/orderSlice";
 import { useAuth } from "../context/AuthContext";
+import LoadingAnimation from "../components/common/LoadingAnimation.jsx";
 
 const OrderConfirmationPage = () => {
   const dispatch = useDispatch();
@@ -22,9 +23,7 @@ const OrderConfirmationPage = () => {
 
   if (loading) {
     return (
-      <div className="max-w-2xl mx-auto px-4 py-16 text-center">
-        <h1 className="text-2xl font-bold mb-4">Loading your order...</h1>
-      </div>
+        <LoadingAnimation />
     );
   }
 

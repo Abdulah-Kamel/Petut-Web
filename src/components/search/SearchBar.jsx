@@ -10,11 +10,11 @@ const SearchBar = ({ value, onChange, onSearch, onClear }) => {
 
   return (
     <form onSubmit={handleSubmit} className="relative mb-4">
-      <div className="relative flex items-center">
+      <div className="relative flex items-center ">
         <button
           type="button"
           onClick={() => navigate(-1)}
-          className="absolute left-3 text-neutral"
+          className="absolute left-3 text-neutral dark:text-white"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -36,14 +36,14 @@ const SearchBar = ({ value, onChange, onSearch, onClear }) => {
           type="text"
           value={value}
           onChange={onChange}
-          placeholder="Search products, brands, etc."
-          className="w-full pl-12 pr-10 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+          placeholder="Search products"
+          className="shadow-lg w-full pl-12 pr-10 py-3 border border-gray-300 dark:border-gray-600 dark:bg-[#313340] dark:text-white placeholder:text-white rounded-full focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
         />
         {value && (
           <button
             type="button"
             onClick={onClear}
-            className="absolute right-14 text-neutral"
+            className="absolute right-14 text-neutral dark:text-white"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

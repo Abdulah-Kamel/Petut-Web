@@ -32,7 +32,7 @@ const BookingLoadingPage = () => {
   useEffect(() => {
     const script = document.createElement("script");
     script.src =
-      "https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js";
+      "https://lottie.host/a4efe5f7-194d-429b-8d14-0f7a4e565fc5/HR3EAogwVr.lottie";
     script.type = "module";
     document.body.appendChild(script);
     return () => {
@@ -50,7 +50,7 @@ const BookingLoadingPage = () => {
       }}
     >
       <dotlottie-wc
-        src="https://lottie.host/b6b7cfd2-642c-4266-a6bd-a5f1f359f80e/xq1qKjfsLZ.lottie"
+        src="https://lottie.host/a4efe5f7-194d-429b-8d14-0f7a4e565fc5/HR3EAogwVr.lottie"
         style={{ width: "300px", height: "300px" }}
         speed="1"
         autoplay

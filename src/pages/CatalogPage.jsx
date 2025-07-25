@@ -13,6 +13,8 @@ import { addFavorite, removeFavorite } from '../store/slices/favoritesSlice';
 import { useAuth } from '../context/AuthContext';
 import ProductCard from '../components/ProductCard';
 import {fetchProducts} from "../store/slices/catalogSlice.js";
+import SearchBar from "../components/search/SearchBar.jsx";
+import LoadingAnimation from "../components/common/LoadingAnimation.jsx";
 
 const CatalogPage = () => {
     const dispatch = useDispatch();
@@ -23,6 +25,19 @@ const CatalogPage = () => {
   const { currentUser } = useAuth();
   const [activeTab, setActiveTab] = useState('all')
   const [categories, setCategories] = useState([])
+  const [inputValue, setInputValue] = useState('');
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const performSearch = (value) => {
+    console.log('Searching for:', value);
+  };
+
+  const handleClearInput = () => {
+    setInputValue('');
+  };
 
   useEffect(() => {
     if (products.length > 0) {
@@ -32,7 +47,7 @@ const CatalogPage = () => {
       dispatch(fetchProducts())
     }
 
-    }, []);
+    }, [products, dispatch]);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -59,7 +74,6 @@ const CatalogPage = () => {
 
   const toggleFavorite = (product) => {
     if (!currentUser) {
-      // TODO: Implement a more user-friendly notification/modal
       alert('Please log in to manage your favorites.');
       return;
     }
@@ -77,6 +91,11 @@ const CatalogPage = () => {
 
   const filteredProducts = products.filter((product) => {
     const { selectedCategories, selectedBrands, priceRange, rating } = filters;
+
+    // Search filter
+    if (inputValue && !product.productName.toLowerCase().includes(inputValue.toLowerCase())) {
+      return false;
+    }
 
     // Category filter from Redux state
     if (selectedCategories.length > 0 && !selectedCategories.includes(product.category)) {
@@ -141,7 +160,12 @@ const CatalogPage = () => {
           </div>
         </div>
       </div>
-
+      <SearchBar
+          value={inputValue}
+          onChange={handleInputChange}
+          onSearch={performSearch}
+          onClear={handleClearInput}
+      />
       {/* Category Tabs */}
       <div className="flex overflow-x-auto space-x-2 mb-6 pb-2 scrollbar-hide">
         <button 
@@ -163,9 +187,7 @@ const CatalogPage = () => {
 
       {/* Products Grid */}
       {loading ? (
-        <div className="flex justify-center items-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-        </div>
+          <LoadingAnimation />
       ) : error ? (
         <div className="text-center text-red-500 py-8">{error}</div>
       ) : (
