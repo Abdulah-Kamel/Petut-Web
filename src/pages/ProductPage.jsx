@@ -71,7 +71,7 @@ const ProductPage = () => {
     return (
       <div className="container mx-auto px-4 py-8 text-center">
         <h2 className="text-2xl font-bold mb-4">Product not found</h2>
-        <p className="text-gray-600 mb-6">The product you are looking for does not exist.</p>
+        <p className="text-gray-600 dark:text-gray-300 mb-6">The product you are looking for does not exist.</p>
         <Link to="/catalog" className="btn-primary">Back to Catalog</Link>
       </div>
     );
@@ -82,7 +82,7 @@ const ProductPage = () => {
       {/* Product Details Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
         {/* Product Image */}
-        <div className="bg-white p-4 rounded-lg shadow-md flex items-center justify-center">
+        <div className="bg-white dark:bg-[#313340] p-4 rounded-lg shadow-md flex items-center justify-center">
           <img
             src={product.imageURL}
             alt={product.productName}
@@ -92,7 +92,7 @@ const ProductPage = () => {
 
         {/* Product Info */}
         <div className="flex flex-col justify-center">
-          <h1 className="text-3xl font-bold mb-2">{product.productName}</h1>
+          <h1 className="text-3xl dark:text-white font-bold mb-2">{product.productName}</h1>
           <div className="flex items-center mb-4">
             <div className="flex items-center mr-4">
               <svg
@@ -101,12 +101,12 @@ const ProductPage = () => {
               >
                 <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
               </svg>
-              <span className="text-lg text-gray-700 ml-1">
+              <span className="text-lg text-gray-700 dark:text-gray-300 ml-1">
                 {product.rate || "N/A"}
               </span>
             </div>
           </div>
-          <p className="text-gray-600 mb-6">{product.description}</p>
+          <p className="text-gray-600 dark:text-gray-300 mb-6">{product.description}</p>
 
           <div className="flex items-center mb-6">
             <span className="text-3xl font-bold text-primary mr-4">
