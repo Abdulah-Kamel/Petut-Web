@@ -44,12 +44,12 @@ const Navbar = () => {
             <Link to="/catalog" className="nav-link">
               Catalog
             </Link>
-            <Link to="/search" className="nav-link">
-              Search
-            </Link>
+            {
+              currentUser &&
             <Link to="/favorites" className="nav-link">
               Favorites
             </Link>
+            }
             <Link to="/clinics" className="nav-link">
               Health
             </Link>

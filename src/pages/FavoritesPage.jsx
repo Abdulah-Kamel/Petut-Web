@@ -4,6 +4,7 @@ import { removeFavorite } from "../store/slices/favoritesSlice";
 import { useAuth } from "../context/AuthContext";
 import ProductCard from "../components/ProductCard";
 import { addToCart } from "../store/slices/cartSlice";
+import LoadingAnimation from "../components/common/LoadingAnimation.jsx";
 
 const FavoritesPage = () => {
   const dispatch = useDispatch();
@@ -28,9 +29,7 @@ const FavoritesPage = () => {
 
   if (status === "loading") {
     return (
-      <div className="container mx-auto px-4 py-8 flex justify-center items-center h-screen-half">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-primary"></div>
-      </div>
+        <LoadingAnimation />
     );
   }
 

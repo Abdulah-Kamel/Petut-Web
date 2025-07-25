@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchUserOrders } from '../store/slices/orderSlice';
 import { useAuth } from '../context/AuthContext';
+import LoadingAnimation from "../components/common/LoadingAnimation.jsx";
 
 const OrderDetailsPage = () => {
   const { orderId } = useParams();
@@ -19,7 +20,7 @@ const OrderDetailsPage = () => {
   }, [currentUser, order, loading, dispatch]);
 
   if (loading) {
-    return <div className="max-w-2xl mx-auto px-4 py-16 text-center">Loading order details...</div>;
+    return <LoadingAnimation />
   }
   if (error) {
     return <div className="max-w-2xl mx-auto px-4 py-16 text-center text-red-500">{error}</div>;

@@ -1,11 +1,12 @@
 import React from 'react';
 import { useNavigate, Link } from "react-router-dom";
+import LoadingAnimation from "../common/LoadingAnimation.jsx";
 
 const OrdersTab = ({ orders, loading, error }) => {
   const navigate = useNavigate();
 
   if (loading) {
-    return <div className="text-center py-12">Loading orders...</div>;
+    return <LoadingAnimation />
   }
   if (error) {
     return <div className="text-center py-12 text-red-500">{error}</div>;
