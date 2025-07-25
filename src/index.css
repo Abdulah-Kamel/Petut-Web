@@ -9,7 +9,7 @@
     font-family: 'Exo', 'Exo 2', system-ui, sans-serif;
   }
   body {
-    @apply bg-secondary-light text-neutral;
+    @apply bg-secondary-light dark:bg-secondary-dark text-neutral;
   }
 }
 
@@ -23,7 +23,7 @@
   }
   
   .card {
-    @apply bg-white rounded-lg shadow-md overflow-hidden;
+    @apply bg-white dark:bg-[#313340] rounded-lg shadow-md overflow-hidden;
   }
   
   .input-field {
@@ -31,7 +31,7 @@
   }
   
   .nav-link {
-    @apply text-neutral hover:text-primary transition-colors;
+    @apply text-neutral dark:text-white hover:text-primary dark:hover:text-primary transition-colors;
   }
   
   .badge {

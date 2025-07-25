@@ -33,7 +33,7 @@ const ProductCard = ({
         <div className="p-4 flex flex-col flex-grow">
           <div className="flex justify-between items-start mb-2">
             <h3
-              className="font-semibold text-lg truncate mr-2"
+              className="font-semibold text-lg dark:text-white truncate mr-2"
               title={product.productName}
             >
               {product.productName}
@@ -68,11 +68,11 @@ const ProductCard = ({
               </span>
             )}
           </div>
-          <p className="text-sm text-gray-600 mb-3 line-clamp-2 flex-grow min-h-[40px]">
+          <p className="text-sm text-gray-600 dark:text-gray-300 mb-3 line-clamp-2 flex-grow min-h-[40px]">
             {product.description}
           </p>
           <div className="flex justify-between items-center mt-auto">
-            <span className="font-bold text-lg">
+            <span className="font-bold text-lg dark:text-white">
               $
               {typeof product.price === "number"
                 ? product.price.toFixed(2)
