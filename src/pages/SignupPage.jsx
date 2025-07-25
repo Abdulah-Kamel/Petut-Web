@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
-import { signInWithGoogle } from '../firebase'
-import { auth } from '../firebase'
+import { signInWithGoogle,auth, db  } from '../firebase'
+import { doc, setDoc,serverTimestamp } from 'firebase/firestore'
 
 const SignupPage = () => {
   const navigate = useNavigate()
@@ -12,9 +12,12 @@ const SignupPage = () => {
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
+    gender: '',
+    phone: '',
     password: '',
     confirmPassword: '',
-    agreeTerms: false
+    agreeTerms: false,
+    role: 'customer'
   })
 
   const [formErrors, setFormErrors] = useState({})
@@ -47,7 +50,17 @@ const SignupPage = () => {
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       errors.email = 'Please enter a valid email address'
     }
-    
+
+    if (!formData.gender) {
+      errors.gender = 'Gender is required'
+    }
+
+    if (!formData.phone.trim()) {
+      errors.phone = 'Phone number is required'
+    } else if(!/^(\+20|0)1[0125]\d{8}$/.test(formData.phone)){
+      errors.phone = 'Please enter a valid phone number'
+    }
+
     if (!formData.password) {
       errors.password = 'Password is required'
     } else if (formData.password.length < 6) {
@@ -77,10 +90,28 @@ const SignupPage = () => {
     setError('');
 
     try {
+      // 1. Create user in Firebase Auth
       const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
-      await updateProfile(userCredential.user, {
+      const user = userCredential.user;
+
+      // 2. Update the profile in Firebase Auth (for displayName)
+      await updateProfile(user, {
         displayName: formData.fullName,
       });
+
+      // 3. Create a user document in Firestore to store additional data
+      // We use the user's UID from Auth as the document ID in Firestore
+      await setDoc(doc(db, "users", user.uid), {
+        uid: user.uid,
+        fullName: formData.fullName,
+        email: formData.email,
+        gender: formData.gender,
+        phone: formData.phone,
+        role: formData.role,
+        createdAt: serverTimestamp(), // <-- Add this line
+        // You can add a timestamp or other fields here
+      });
+
       navigate('/');
     } catch (err) {
       switch (err.code) {
@@ -180,7 +211,51 @@ const SignupPage = () => {
               />
               {formErrors.email && <p className="mt-1 text-sm text-red-500">{formErrors.email}</p>}
             </div>
-            
+
+            <div className="space-y-4">
+              <div>
+                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
+                  Gender
+                </label>
+                <input
+                    type="number"
+                    id="phone"
+                    name="phone"
+                    autoComplete="name"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className={`appearance-none relative block w-full px-3 py-3 border ${formErrors.email ? 'border-red-500' : 'border-gray-300'} dark:border-gray-500 dark:bg-[#313340] dark:text-white rounded-lg placeholder-gray-500 dark:placeholder:text-white focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-sm`}
+                    placeholder="Phone"
+                />
+
+                {formErrors.phone && <p className="mt-1 text-sm text-red-500">{formErrors.phone}</p>}
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <div>
+                <label htmlFor="gender" className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
+                  Gender
+                </label>
+                <select
+                    id="gender"
+                    name="gender"
+                    type="select"
+                    autoComplete="name"
+                    value={formData.gender}
+                    onChange={handleChange}
+                    className={`appearance-none relative block w-full px-3 py-3 border ${formErrors.email ? 'border-red-500' : 'border-gray-300'} dark:border-gray-500 dark:bg-[#313340] dark:text-white rounded-lg placeholder-gray-500 dark:placeholder:text-white focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-sm`}
+                    placeholder="Gender"
+                >
+                  <option value="">Select Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+                {formErrors.gender && <p className="mt-1 text-sm text-red-500">{formErrors.gender}</p>}
+              </div>
+              </div>
+
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
                 Password
