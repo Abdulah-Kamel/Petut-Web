@@ -28,8 +28,6 @@ export const fetchProducts = createAsyncThunk(
           // Convert Firestore timestamps to ISO strings for serialization
           createdAt:
             data.createdAt?.toDate?.()?.toISOString?.() || data.createdAt,
-          updatedAt:
-            data.updatedAt?.toDate?.()?.toISOString?.() || data.updatedAt,
         };
       });
       return formattedProducts; // This becomes the `action.payload` on success

@@ -98,3 +98,25 @@ export async function updateOrderStatus(uid, orderId, status) {
   const orderRef = doc(db, "users", uid, "orders", orderId);
   await updateDoc(orderRef, { status });
 }
+
+/**
+ * Get user profile data from Firestore (/users/{uid})
+ * @param {string} uid
+ * @returns {Promise<Object|null>}
+ */
+export async function getUserProfile(uid) {
+  const userRef = doc(db, "users", uid);
+  const userSnap = await getDoc(userRef);
+  return userSnap.exists() ? userSnap.data() : null;
+}
+
+/**
+ * Set user profile data in Firestore (/users/{uid})
+ * @param {string} uid
+ * @param {Object} profileData
+ * @returns {Promise<void>}
+ */
+export async function setUserProfile(uid, profileData) {
+  const userRef = doc(db, "users", uid);
+  await setDoc(userRef, profileData, { merge: true });
+}

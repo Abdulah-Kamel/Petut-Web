@@ -140,6 +140,8 @@ const PaymentPage = () => {
         setIsProcessing(false);
         navigate("/order-confirmation");
       } catch (err) {
+        console.error("Order placement error:", err);
+        console.error("Order data:", orderData);
         setIsProcessing(false);
         setErrors((prev) => ({
           ...prev,

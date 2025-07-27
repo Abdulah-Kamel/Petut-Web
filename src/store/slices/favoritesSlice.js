@@ -35,8 +35,6 @@ export const fetchFavorites = createAsyncThunk(
               // Convert Firestore timestamps to ISO strings for serialization
               createdAt:
                 data.createdAt?.toDate?.()?.toISOString?.() || data.createdAt,
-              updatedAt:
-                data.updatedAt?.toDate?.()?.toISOString?.() || data.updatedAt,
             };
           }
           return null;
@@ -69,8 +67,6 @@ export const addFavorite = createAsyncThunk(
         // Convert Firestore timestamps to ISO strings for serialization
         createdAt:
           product.createdAt?.toDate?.()?.toISOString?.() || product.createdAt,
-        updatedAt:
-          product.updatedAt?.toDate?.()?.toISOString?.() || product.updatedAt,
       };
     } catch (error) {
       return rejectWithValue(error.message);
