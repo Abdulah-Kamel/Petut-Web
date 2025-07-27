@@ -31,7 +31,7 @@ const OrdersTab = ({ orders, loading, error }) => {
               d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
             />
           </svg>
-          <h3 className="text-xl font-semibold mb-2">No orders yet</h3>
+          <h3 className="text-xl dark:text-white font-semibold mb-2">No orders yet</h3>
           <p className="text-gray-600 dark:text-gray-300 mb-6">
             You haven't placed any orders yet.
           </p>
