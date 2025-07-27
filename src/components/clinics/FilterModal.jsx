@@ -11,20 +11,24 @@ const FilterModal = ({
   if (!open) return null;
   return (
     <div className="fixed inset-0 bg-black bg-opacity-30 flex items-end z-50">
-      <div className="bg-white w-full rounded-t-2xl p-6 shadow-lg">
+      <div className="bg-white dark:bg-gray-800 w-full rounded-t-2xl p-6 shadow-lg">
         <div className="flex justify-between items-center mb-4">
-          <div className="text-lg font-bold text-primary">Sort & Filter</div>
+          <div className="text-lg font-bold text-primary dark:text-white">
+            Sort & Filter
+          </div>
           <button
             onClick={onClose}
-            className="text-secondary hover:text-primary"
+            className="text-secondary hover:text-primary dark:text-gray-300 dark:hover:text-white"
           >
             <span className="material-icons">close</span>
           </button>
         </div>
         <div className="mb-4">
-          <div className="font-semibold mb-2 text-primary">Sort by:</div>
+          <div className="font-semibold mb-2 text-primary dark:text-white">
+            Sort by:
+          </div>
           <div className="flex flex-col gap-2">
-            <label className="flex items-center gap-2 text-black">
+            <label className="flex items-center gap-2 text-black dark:text-white">
               <input
                 type="radio"
                 name="sortBy"
@@ -35,7 +39,7 @@ const FilterModal = ({
               />
               Nearest
             </label>
-            <label className="flex items-center gap-2 text-black">
+            <label className="flex items-center gap-2 text-black dark:text-white">
               <input
                 type="radio"
                 name="sortBy"
@@ -46,7 +50,7 @@ const FilterModal = ({
               />
               Price (Low to High)
             </label>
-            <label className="flex items-center gap-2 text-black">
+            <label className="flex items-center gap-2 text-black dark:text-white">
               <input
                 type="radio"
                 name="sortBy"
@@ -60,13 +64,17 @@ const FilterModal = ({
           </div>
         </div>
         <div>
-          <div className="font-semibold mb-2 text-primary">Minimum Rating:</div>
+          <div className="font-semibold mb-2 text-primary dark:text-white">
+            Minimum Rating:
+          </div>
           <div className="flex gap-1">
             {Array.from({ length: 5 }).map((_, i) => (
               <button key={i} onClick={() => setMinRating(i + 1)}>
                 <span
                   className={`material-icons text-2xl ${
-                    i < minRating ? "text-primary" : "text-secondary-light"
+                    i < minRating
+                      ? "text-primary"
+                      : "text-secondary-light dark:text-gray-400"
                   }`}
                 >
                   star

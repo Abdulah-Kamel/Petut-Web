@@ -12,15 +12,16 @@ const ProfileForm = ({ currentUser }) => {
   const { authUser } = useAuth ? useAuth() : { authUser: null };
   const [fullName, setFullName] = useState(currentUser?.displayName || "");
   const [email] = useState(currentUser?.email || "");
+  const [gender] = useState(currentUser?.gender || "");
   const [phone, setPhone] = useState("");
-  const [birthdate, setBirthdate] = useState(""); // Not stored in Auth
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordMsg, setPasswordMsg] = useState("");
   const [profileMsg, setProfileMsg] = useState("");
   const [loading, setLoading] = useState(false);
-  const [profileImage, setProfileImage] = useState(""); // base64 string
+  const [profileImage, setProfileImage] = useState(""); // base64 for preview
+  const [profileImageFile, setProfileImageFile] = useState(null);
 
   // Fetch user profile from Firestore on mount
   useEffect(() => {
@@ -29,7 +30,6 @@ const ProfileForm = ({ currentUser }) => {
         const profile = await getUserProfile(currentUser.uid);
         if (profile) {
           setPhone(profile.phone || "");
-          setBirthdate(profile.birthdate || "");
           setProfileImage(profile.profileImage || "");
         }
       }
@@ -42,9 +42,12 @@ const ProfileForm = ({ currentUser }) => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
+
+    setProfileImageFile(file);
+
     const reader = new FileReader();
     reader.onloadend = () => {
-      setProfileImage(reader.result); // base64 string
+      setProfileImage(reader.result); // base64 string for preview
     };
     reader.readAsDataURL(file);
   };
@@ -55,17 +58,44 @@ const ProfileForm = ({ currentUser }) => {
     setLoading(true);
     try {
       if (currentUser) {
+        let imageUrl = profileImage; // Keep existing image if no new one is uploaded
+
+        if (profileImageFile) {
+          const apiKey = "01a0445653bd47247515dce07a3f1400";
+          const formData = new FormData();
+          formData.append("image", profileImageFile);
+
+          const response = await fetch(
+            `https://api.imgbb.com/1/upload?expiration=600&key=${apiKey}`,
+            {
+              method: "POST",
+              body: formData,
+            }
+          );
+
+          const result = await response.json();
+
+          if (result.success) {
+            imageUrl = result.data.url;
+          } else {
+            throw new Error(result.error.message || "Image upload failed");
+          }
+        }
+
         // Save to Firestore
         await setUserProfile(currentUser.uid, {
           phone,
-          birthdate,
-          profileImage,
+          profileImage: imageUrl,
+          gender,
         });
+
         // Optionally update displayName in Auth
         await updateProfile(currentUser, {
           displayName: fullName,
         });
+
         setProfileMsg("Profile updated successfully!");
+        setProfileImageFile(null); // Reset file input
       }
     } catch (err) {
       setProfileMsg(err.message || "Failed to update profile.");
@@ -105,8 +135,8 @@ const ProfileForm = ({ currentUser }) => {
   };
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-6">
-      <h2 className="text-2xl font-bold mb-6">My Profile</h2>
+    <div className="bg-white dark:bg-[#313340] rounded-lg border border-gray-200 dark:border-gray-700 p-6">
+      <h2 className="text-2xl dark:text-white font-bold mb-6">My Profile</h2>
       <form className="space-y-6" onSubmit={handleProfileSave}>
         {/* Image upload */}
         <div className="flex max-lg:flex-col items-center space-x-4 mb-4">
@@ -118,7 +148,7 @@ const ProfileForm = ({ currentUser }) => {
                 className="w-28 h-28 rounded-full object-cover border"
               />
             ) : (
-              <div className="w-20 h-20 rounded-full bg-gray-200 flex items-center justify-center text-gray-400">
+              <div className="w-20 h-20 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-400 dark:text-gray-300">
                 No Image
               </div>
             )}
@@ -128,7 +158,7 @@ const ProfileForm = ({ currentUser }) => {
               type="file"
               accept="image/*"
               onChange={handleImageChange}
-              className="max-lg:w-full py-3 px-8 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer hover:bg-gray-50 hover:ring-1 hover:ring-primary"
+              className="max-lg:w-full py-3 px-8 border dark:text-white border-gray-300 dark:border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-600 hover:ring-1 hover:ring-primary"
             />
           </div>
         </div>
@@ -136,7 +166,7 @@ const ProfileForm = ({ currentUser }) => {
           <div>
             <label
               htmlFor="fullName"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-medium text-gray-700 dark:text-white  mb-1"
             >
               Full Name
             </label>
@@ -146,13 +176,13 @@ const ProfileForm = ({ currentUser }) => {
               name="fullName"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
+              className="w-full p-3 dark:bg-[#313340] dark:text-white border border-gray-300 dark:border-gray-400 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
             />
           </div>
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-medium text-gray-700 dark:text-white mb-1"
             >
               Email Address
             </label>
@@ -162,13 +192,13 @@ const ProfileForm = ({ currentUser }) => {
               name="email"
               value={email}
               disabled
-              className="w-full p-3 border border-gray-300 rounded-lg bg-gray-100 focus:outline-none focus:ring-1 focus:ring-primary"
+              className="w-full p-3 dark:bg-[#313340] dark:text-white border border-gray-300 dark:border-gray-400 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
             />
           </div>
           <div>
             <label
               htmlFor="phone"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-medium text-gray-700 dark:text-white mb-1"
             >
               Phone Number
             </label>
@@ -179,24 +209,7 @@ const ProfileForm = ({ currentUser }) => {
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder=""
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="birthdate"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              Date of Birth
-            </label>
-            <input
-              type="date"
-              id="birthdate"
-              name="birthdate"
-              value={birthdate}
-              onChange={(e) => setBirthdate(e.target.value)}
-              placeholder=""
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
+              className="w-full p-3 dark:bg-[#313340] dark:text-white border border-gray-300 dark:border-gray-400 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
             />
           </div>
         </div>
@@ -213,12 +226,12 @@ const ProfileForm = ({ currentUser }) => {
           </button>
         </div>
         <div>
-          <h3 className="text-lg font-semibold mb-3">Change Password</h3>
+          <h3 className="text-lg dark:text-white font-semibold mb-3">Change Password</h3>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-end">
             <div>
               <label
                 htmlFor="currentPassword"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="block text-sm font-medium text-gray-700 dark:text-white mb-1"
               >
                 Current Password
               </label>
@@ -228,13 +241,13 @@ const ProfileForm = ({ currentUser }) => {
                 name="currentPassword"
                 value={currentPassword}
                 onChange={(e) => setCurrentPassword(e.target.value)}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
+                className="w-full p-3 dark:bg-[#313340] dark:text-white border border-gray-300 dark:border-gray-400 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
               />
             </div>
             <div>
               <label
                 htmlFor="newPassword"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="block text-sm font-medium text-gray-700 dark:text-white mb-1"
               >
                 New Password
               </label>
@@ -244,13 +257,13 @@ const ProfileForm = ({ currentUser }) => {
                 name="newPassword"
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
+                className="w-full p-3 dark:bg-[#313340] dark:text-white border border-gray-300 dark:border-gray-400 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
               />
             </div>
             <div>
               <label
                 htmlFor="confirmPassword"
-                className="block text-sm font-medium text-gray-700 mb-1"
+                className="block text-sm font-medium text-gray-700 dark:text-white mb-1"
               >
                 Confirm New Password
               </label>
@@ -260,7 +273,7 @@ const ProfileForm = ({ currentUser }) => {
                 name="confirmPassword"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
+                className="w-full p-3 dark:bg-[#313340] dark:text-white border border-gray-300 dark:border-gray-400 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
               />
             </div>
             <div className="flex md:block justify-end w-full mt-4 md:mt-0">
@@ -275,7 +288,7 @@ const ProfileForm = ({ currentUser }) => {
             </div>
           </div>
           {passwordMsg && (
-            <div className="text-green-600 font-medium mt-2">{passwordMsg}</div>
+            <div className={`${passwordMsg === "Password updated successfully!" ?  "text-green-600" : "text-red-600"} font-medium mt-2`}>{passwordMsg}</div>
           )}
         </div>
       </form>

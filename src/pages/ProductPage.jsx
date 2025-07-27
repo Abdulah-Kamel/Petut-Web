@@ -5,6 +5,7 @@ import { addToCart } from '../store/slices/cartSlice';
 import { addFavorite, removeFavorite } from '../store/slices/favoritesSlice';
 import { useAuth } from '../context/AuthContext';
 import {fetchProducts} from "../store/slices/catalogSlice.js";
+import LoadingAnimation from "../components/common/LoadingAnimation.jsx";
 
 const ProductPage = () => {
   const { productId } = useParams();
@@ -51,9 +52,7 @@ const ProductPage = () => {
 
   if (loading) {
     return (
-      <div className="container mx-auto px-4 py-8 flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-primary"></div>
-      </div>
+        <LoadingAnimation />
     );
   }
 
@@ -70,8 +69,8 @@ const ProductPage = () => {
   if (!product) {
     return (
       <div className="container mx-auto px-4 py-8 text-center">
-        <h2 className="text-2xl font-bold mb-4">Product not found</h2>
-        <p className="text-gray-600 mb-6">The product you are looking for does not exist.</p>
+        <h2 className="text-2xl dark:text-white font-bold mb-4">Product not found</h2>
+        <p className="text-gray-600 dark:text-gray-300 mb-6">The product you are looking for does not exist.</p>
         <Link to="/catalog" className="btn-primary">Back to Catalog</Link>
       </div>
     );
@@ -82,7 +81,7 @@ const ProductPage = () => {
       {/* Product Details Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
         {/* Product Image */}
-        <div className="bg-white p-4 rounded-lg shadow-md flex items-center justify-center">
+        <div className="bg-white dark:bg-[#313340] p-4 rounded-lg shadow-md flex items-center justify-center">
           <img
             src={product.imageURL}
             alt={product.productName}
@@ -92,7 +91,7 @@ const ProductPage = () => {
 
         {/* Product Info */}
         <div className="flex flex-col justify-center">
-          <h1 className="text-3xl font-bold mb-2">{product.productName}</h1>
+          <h1 className="text-3xl dark:text-white font-bold mb-2">{product.productName}</h1>
           <div className="flex items-center mb-4">
             <div className="flex items-center mr-4">
               <svg
@@ -101,12 +100,12 @@ const ProductPage = () => {
               >
                 <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
               </svg>
-              <span className="text-lg text-gray-700 ml-1">
+              <span className="text-lg text-gray-700 dark:text-gray-300 ml-1">
                 {product.rate || "N/A"}
               </span>
             </div>
           </div>
-          <p className="text-gray-600 mb-6">{product.description}</p>
+          <p className="text-gray-600 dark:text-gray-300 mb-6">{product.description}</p>
 
           <div className="flex items-center mb-6">
             <span className="text-3xl font-bold text-primary mr-4">
@@ -153,7 +152,7 @@ const ProductPage = () => {
       {/* Related Products Section */}
       {relatedProducts.length > 0 && (
         <div>
-          <h2 className="text-2xl font-bold mb-6">Related Products</h2>
+          <h2 className="text-2xl dark:text-white font-bold mb-6">Related Products</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {relatedProducts.map((relatedProduct) => (
               <div
@@ -171,7 +170,7 @@ const ProductPage = () => {
                 </Link>
                 <div className="p-4">
                   <h3
-                    className="font-semibold text-lg truncate"
+                    className="font-semibold dark:text-white text-lg truncate"
                     title={relatedProduct.productName}
                   >
                     <Link to={`/product/${relatedProduct.id}`}>
@@ -179,7 +178,7 @@ const ProductPage = () => {
                     </Link>
                   </h3>
                   <div className="flex justify-between items-center mt-2">
-                    <span className="font-bold text-lg">
+                    <span className="font-bold text-lg dark:text-white">
                       ${relatedProduct.price.toFixed(2)}
                     </span>
                     <button className="btn-primary py-1 px-3">

@@ -8,6 +8,7 @@ import ProductCard from "../components/ProductCard";
 import { addToCart } from "../store/slices/cartSlice";
 import heroDog from "../assets/banners/hero-dog.png";
 import DarkModeToggle from "../components/DarkModeToggle";
+import LoadingAnimation from "../components/common/LoadingAnimation.jsx";
 
 // No more direct imports from 'firebase/firestore' or 'firebase.js' needed here!
 
@@ -38,19 +39,15 @@ const HomePage = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 mt-14">
-      {/* <div className="bg-white dark:bg-black text-black dark:text-white p-8">
-        <DarkModeToggle />
-        <p>Hello, dark mode!</p>
-      </div> */}
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-secondary-light to-secondary rounded-2xl overflow-hidden mb-8">
+      <section className="relative bg-gradient-to-r from-secondary-light to-secondary dark:from-secondary-dark dark:to-secondary-dark rounded-2xl overflow-hidden mb-8">
         <div className="container mx-auto px-6 py-12 md:py-24">
           <div className="flex flex-col md:flex-row items-center">
             <div className="md:w-1/2 max-md:order-last mb-8 md:mb-0">
-              <h1 className="text-4xl md:text-5xl font-bold text-neutral mb-4">
+              <h1 className="text-4xl md:text-5xl font-bold text-neutral dark:text-white mb-4">
                 Taking care of <span className="text-primary">your pet</span>
               </h1>
-              <p className="text-lg mb-6">
+              <p className="text-lg dark:text-gray-300 mb-6">
                 Find everything your pet needs - from premium food to toys and
                 accessories.
               </p>
@@ -72,16 +69,14 @@ const HomePage = () => {
       {/* Featured Products */}
       <section className="mb-12">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold">Featured Products</h2>
+          <h2 className="text-2xl font-bold dark:text-white">Featured Products</h2>
           <Link to="/catalog" className="text-primary hover:underline">
             View All
           </Link>
         </div>
 
         {loading ? (
-          <div className="flex justify-center items-center h-64">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-          </div>
+         <LoadingAnimation />
         ) : error ? (
           <div className="text-center text-red-500 py-8">{error}</div>
         ) : (
