@@ -29,6 +29,7 @@ import BookingConfirmationPage from "./pages/BookingConfirmationPage";
 import BookingLoadingPage from "./pages/BookingLoadingPage";
 import BookingSuccessPage from "./pages/BookingSuccessPage";
 import CompleteProfile from "./pages/CompleteProfile.jsx";
+import NotificationHandler from "./components/Notification/NotificationHandler.jsx";
 
 function App() {
   const dispatch = useDispatch();
@@ -108,79 +109,109 @@ function App() {
   }, [cart, currentUser, dispatch]);
 
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage />} />
-        <Route path="catalog" element={<CatalogPage />} />
-        <Route path="filters" element={<FilterPage />} />
-        <Route path="product/:productId" element={<ProductPage />} />
-        <Route path="delivery" element={
-          <ProtectedRoute>
-          <DeliveryPage />
-          </ProtectedRoute>
-        } />
-        <Route path="order-confirmation" element={
-          <ProtectedRoute>
-          <OrderConfirmationPage />
-          </ProtectedRoute>
-          } />
-        <Route path="cart" element={<CartPage />} />
-        <Route path="payment" element={
-          <ProtectedRoute>
-          <PaymentPage />
-          </ProtectedRoute>
-          } />
-        <Route
-          path="profile"
-          element={
-            <ProtectedRoute>
-              <ProfilePage />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="favorites" element={
-          <ProtectedRoute>
-          <FavoritesPage />
-          </ProtectedRoute>
-          } />
-        <Route path="/order/:orderId" element={
-          <ProtectedRoute>
-          <OrderDetailsPage />
-            </ProtectedRoute>
-          } />
-        <Route path="clinics" element={
-          <ProtectedRoute>
-          <ClinicsScreen />
-          </ProtectedRoute>
-        } />
-        <Route path="ClinicDetailsScreen" element={
-          <ProtectedRoute>
-          <ClinicDetailsScreen />
-          </ProtectedRoute>
-          } />
-        <Route
-          path="/booking-confirmation"
-          element={
-          <ProtectedRoute>
-          <BookingConfirmationPage />
-          </ProtectedRoute>
+    <>
+      <NotificationHandler />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="catalog" element={<CatalogPage />} />
+          <Route path="filters" element={<FilterPage />} />
+          <Route path="product/:productId" element={<ProductPage />} />
+          <Route
+            path="delivery"
+            element={
+              <ProtectedRoute>
+                <DeliveryPage />
+              </ProtectedRoute>
             }
-        />
-        <Route path="/booking-loading" element={
-          <ProtectedRoute>
-          <BookingLoadingPage />
-          </ProtectedRoute>
-          } />
-        <Route path="/booking-success" element={
-          <ProtectedRoute>
-          <BookingSuccessPage />
-          </ProtectedRoute>
-          } />
-      </Route>
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/signup" element={<SignupPage />} />
-      <Route path="/complete-profile" element={<CompleteProfile />} />
-    </Routes>
+          />
+          <Route
+            path="order-confirmation"
+            element={
+              <ProtectedRoute>
+                <OrderConfirmationPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="cart" element={<CartPage />} />
+          <Route
+            path="payment"
+            element={
+              <ProtectedRoute>
+                <PaymentPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="profile"
+            element={
+              <ProtectedRoute>
+                <ProfilePage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="favorites"
+            element={
+              <ProtectedRoute>
+                <FavoritesPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/order/:orderId"
+            element={
+              <ProtectedRoute>
+                <OrderDetailsPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="clinics"
+            element={
+              <ProtectedRoute>
+                <ClinicsScreen />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="ClinicDetailsScreen"
+            element={
+              <ProtectedRoute>
+                <ClinicDetailsScreen />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/booking-confirmation"
+            element={
+              <ProtectedRoute>
+                <BookingConfirmationPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/booking-loading"
+            element={
+              <ProtectedRoute>
+                <BookingLoadingPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/booking-success"
+            element={
+              <ProtectedRoute>
+                <BookingSuccessPage />
+              </ProtectedRoute>
+            }
+          />
+        </Route>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/complete-profile" element={<CompleteProfile />} />
+      </Routes>
+    </>
   );
 }
 
