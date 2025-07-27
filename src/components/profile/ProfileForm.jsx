@@ -12,7 +12,7 @@ const ProfileForm = ({ currentUser }) => {
   const { authUser } = useAuth ? useAuth() : { authUser: null };
   const [fullName, setFullName] = useState(currentUser?.displayName || "");
   const [email] = useState(currentUser?.email || "");
-  const [gender] = useState(currentUser?.gender || "");
+  const [gender,setGender] = useState(currentUser?.gender || "");
   const [phone, setPhone] = useState("");
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -31,6 +31,7 @@ const ProfileForm = ({ currentUser }) => {
         if (profile) {
           setPhone(profile.phone || "");
           setProfileImage(profile.profileImage || "");
+          setGender(profile.gender || "");
         }
       }
     }
@@ -211,6 +212,27 @@ const ProfileForm = ({ currentUser }) => {
               placeholder=""
               className="w-full p-3 dark:bg-[#313340] dark:text-white border border-gray-300 dark:border-gray-400 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
             />
+          </div>
+          <div>
+            <label
+              htmlFor="gender"
+              className="block text-sm font-medium text-gray-700 dark:text-white mb-1"
+            >
+              Gender
+            </label>
+            <select
+              id="gender"
+              name="gender"
+              value={gender}
+              onChange={(e) => setGender(e.target.value)}
+              placeholder=""
+              className="w-full p-3 dark:bg-[#313340] dark:text-white border border-gray-300 dark:border-gray-400 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary"
+            >
+              <option value="">Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
           </div>
         </div>
         {profileMsg && (

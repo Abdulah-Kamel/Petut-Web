@@ -29,6 +29,7 @@ import BookingConfirmationPage from "./pages/BookingConfirmationPage";
 import BookingLoadingPage from "./pages/BookingLoadingPage";
 import BookingSuccessPage from "./pages/BookingSuccessPage";
 import CompleteProfile from "./pages/CompleteProfile.jsx";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -180,6 +181,7 @@ function App() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/complete-profile" element={<CompleteProfile />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 }
