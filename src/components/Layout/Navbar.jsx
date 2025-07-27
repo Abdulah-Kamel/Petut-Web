@@ -1,16 +1,18 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useAuth } from "../../context/AuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 import DarkModeToggle from "../DarkModeToggle";
+import {doc, getDoc, getFirestore} from "firebase/firestore";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   const { totalQuantity } = useSelector((state) => state.cart);
   const { currentUser } = useAuth();
+  const [userData, setUserData] = useState(null);
 
   const handleLogout = async () => {
     try {
@@ -24,7 +26,28 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+  const fetchUserData = async () => {
+    if (currentUser) {
+      const db = getFirestore();
+      // Create a reference to the user's document in the 'users' collection
+      const userDocRef = doc(db, 'users', currentUser.uid);
 
+      try {
+        const docSnap = await getDoc(userDocRef);
+        if (docSnap.exists()) {
+          // If the document exists, set the user data in state
+          setUserData(docSnap.data());
+        } else {
+          console.log('No such document in Firestore!');
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    }
+  };
+  useEffect(() => {
+    fetchUserData();
+  }, [currentUser]);
   return (
     <nav className="bg-white dark:bg-[#313340] shadow-md fixed top-0 left-0 right-0 z-50">
       <div className="container mx-auto px-4">
@@ -53,6 +76,12 @@ const Navbar = () => {
             <Link to="/clinics" className="nav-link">
               Health
             </Link>
+            {
+                userData?.role === "doctor" &&
+            <Link to="/dashboard" className="nav-link">
+              Dashboard
+            </Link>
+            }
           </div>
           {/* User Actions */}
           <div className="flex items-center space-x-4">
