@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp, doc, updateDoc,} from "firebase/firestore";
 import { db } from "../firebase";
+import { useAuth } from "../context/AuthContext";
+import DarkModeToggle from "../components/DarkModeToggle";
 
 const paymentMethods = [
   { key: "card", label: "💳 Visa / Mastercard" },
@@ -12,6 +14,7 @@ const BookingConfirmationPage = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
   const { clinic, selectedDay, selectedTime, selectedDate } = state || {};
+  const { currentUser } = useAuth();
 
   const [selectedPayment, setSelectedPayment] = useState("card");
   const [showPaymentModal, setShowPaymentModal] = useState(false);
@@ -28,7 +31,11 @@ const BookingConfirmationPage = () => {
   const handleConfirmBooking = async () => {
     setLoading(true);
     try {
-      await addDoc(collection(db, "bookings"), {
+      // Prepare user info
+      const userId = currentUser?.uid || "";
+      const userName = currentUser?.displayName || currentUser?.email || "";
+      // Add booking
+      const docRef = await addDoc(collection(db, "bookings"), {
         clinicId: clinic.id,
         clinicName: clinic.clinicName || clinic.name || clinic.doctorName,
         clinicPhone: clinic.phone || clinic.phoneNumber,
@@ -40,8 +47,12 @@ const BookingConfirmationPage = () => {
         paymentMethod:
           selectedPayment === "card" ? "Visa / Mastercard" : "Cash on arrival",
         timestamp: serverTimestamp(),
-        status: "Confirmed",
+        status: "booked",
+        userId,
+        userName,
       });
+      // booking Id
+      await updateDoc(doc(db, "bookings", docRef.id), { bookingId: docRef.id });
       navigate("/booking-loading", {
         state: {
           clinic,
@@ -60,10 +71,14 @@ const BookingConfirmationPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-secondary-light flex flex-col">
-      {/* AppBar */}
-      <div className="bg-white shadow p-4 flex items-center justify-center">
-        <h2 className="font-bold text-lg">Confirm appointment</h2>
+    <div className="min-h-screen bg-secondary-light dark:bg-gray-900 flex flex-col">
+      <div className="bg-white dark:bg-gray-800 shadow p-4 flex items-center justify-center relative">
+        <h2 className="font-bold text-lg dark:text-white">
+          Confirm appointment
+        </h2>
+        <div className="absolute right-4">
+          <DarkModeToggle />
+        </div>
       </div>
 
       {/* Main Content */}
@@ -73,29 +88,33 @@ const BookingConfirmationPage = () => {
           <img
             src={clinic.image}
             alt={clinic.clinicName || clinic.name}
-            className="w-20 h-20 rounded-full object-cover border"
+            className="w-20 h-20 rounded-full object-cover border dark:border-gray-600"
             onError={(e) => (e.target.style.display = "none")}
           />
           <div className="ml-4 flex-1">
-            <div className="font-bold text-lg">
+            <div className="font-bold text-lg dark:text-white">
               {clinic.clinicName || clinic.name}
             </div>
-            <div className="text-gray-500">
+            <div className="text-gray-500 dark:text-gray-400">
               {clinic.clinicAddress || clinic.location}
             </div>
             <div className="flex items-center mt-1">
               <span className="text-yellow-500 mr-1">★</span>
-              <span>{clinic.rating ? `${clinic.rating}/5` : "No rating"}</span>
+              <span className="dark:text-white">
+                {clinic.rating ? `${clinic.rating}/5` : "No rating"}
+              </span>
             </div>
           </div>
         </div>
 
         {/* Appointment Time */}
-        <div className="bg-white rounded-lg shadow p-4 flex items-center mb-6">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 flex items-center mb-6">
           <span className="material-icons text-primary mr-3">event</span>
           <div>
-            <div className="text-gray-500">Appointment time</div>
-            <div className="font-bold">
+            <div className="text-gray-500 dark:text-gray-400">
+              Appointment time
+            </div>
+            <div className="font-bold dark:text-white">
               {selectedDay}, {selectedTime}
             </div>
           </div>
@@ -103,7 +122,7 @@ const BookingConfirmationPage = () => {
 
         {/* Billing Details */}
         <div className="mb-6">
-          <div className="font-bold mb-2">Billing details</div>
+          <div className="font-bold mb-2 dark:text-white">Billing details</div>
           <InfoRow label="Consultation fee" value={`${clinic.price} EGP`} />
           <InfoRow label="Service fee & tax" value="FREE" />
           <InfoRow label="Total payable" value={`${clinic.price} EGP`} isBold />
@@ -112,7 +131,7 @@ const BookingConfirmationPage = () => {
         {/* Payment Method */}
         <div className="mb-6">
           <div className="flex justify-between items-center">
-            <span className="font-bold">Payment method</span>
+            <span className="font-bold dark:text-white">Payment method</span>
             <button
               className="text-primary font-semibold"
               onClick={() => setShowPaymentModal(true)}
@@ -120,15 +139,17 @@ const BookingConfirmationPage = () => {
               CHANGE
             </button>
           </div>
-          <div className="mt-2">
+          <div className="mt-2 dark:text-white">
             {paymentMethods.find((m) => m.key === selectedPayment).label}
           </div>
         </div>
       </div>
 
       {/* Bottom Bar */}
-      <div className="bg-white p-4 flex items-center shadow">
-        <div className="font-bold text-lg flex-1">{clinic.price} EGP</div>
+      <div className="bg-white dark:bg-gray-800 p-4 flex items-center shadow">
+        <div className="font-bold text-lg flex-1 dark:text-white">
+          {clinic.price} EGP
+        </div>
         <button
           className="btn-primary w-1/2"
           onClick={handleConfirmBooking}
@@ -141,12 +162,14 @@ const BookingConfirmationPage = () => {
       {/* Payment Method Modal */}
       {showPaymentModal && (
         <div className="fixed inset-0 bg-black bg-opacity-40 flex items-end z-50">
-          <div className="bg-white w-full rounded-t-2xl p-6">
-            <div className="font-bold text-lg mb-4">Select payment method</div>
+          <div className="bg-white dark:bg-gray-800 w-full rounded-t-2xl p-6">
+            <div className="font-bold text-lg mb-4 dark:text-white">
+              Select payment method
+            </div>
             {paymentMethods.map((method) => (
               <label
                 key={method.key}
-                className="flex items-center py-2 cursor-pointer"
+                className="flex items-center py-2 cursor-pointer dark:text-white"
               >
                 <input
                   type="radio"
@@ -161,7 +184,7 @@ const BookingConfirmationPage = () => {
               </label>
             ))}
             <button
-              className="mt-4 btn-secondary w-full"
+              className="mt-4 btn-secondary w-full dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600"
               onClick={() => setShowPaymentModal(false)}
             >
               Cancel
@@ -176,8 +199,10 @@ const BookingConfirmationPage = () => {
 function InfoRow({ label, value, isBold }) {
   return (
     <div className="flex justify-between py-1">
-      <span>{label}</span>
-      <span className={isBold ? "font-bold" : ""}>{value}</span>
+      <span className="dark:text-white">{label}</span>
+      <span className={`${isBold ? "font-bold" : ""} dark:text-white`}>
+        {value}
+      </span>
     </div>
   );
 }
