@@ -9,6 +9,7 @@ import { fetchUserOrders } from "../store/slices/orderSlice";
 import ProfileSidebar from "../components/profile/ProfileSidebar";
 import ProfileForm from "../components/profile/ProfileForm";
 import OrdersTab from "../components/profile/OrdersTab";
+import PetsTab from "../components/profile/PetsTab.jsx";
 import FavoritesTab from "../components/profile/FavoritesTab";
 import SettingsTab from "../components/profile/SettingsTab";
 
@@ -42,6 +43,8 @@ const ProfilePage = () => {
         return <ProfileForm currentUser={currentUser} />;
       case "orders":
         return <OrdersTab orders={orders} loading={loading} error={error} />;
+      case "pets":
+        return <PetsTab currentUser={currentUser} />;
       case "favorites":
         return <FavoritesTab />;
       case "settings":

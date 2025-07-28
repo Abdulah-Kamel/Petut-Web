@@ -115,9 +115,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
+          <Route path="*" element={<NotFoundPage />} />
           <Route path="catalog" element={<CatalogPage />} />
           <Route path="filters" element={<FilterPage />} />
-          <Route path="product/:productId" element={<ProductPage />} />
+          <Route path="prحoduct/:productId" element={<ProductPage />} />
           <Route
             path="delivery"
             element={
