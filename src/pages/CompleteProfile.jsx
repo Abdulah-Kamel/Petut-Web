@@ -2,6 +2,7 @@ import { useSearchParams, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { doc, setDoc, serverTimestamp } from 'firebase/firestore'
 import { db, auth } from '../firebase'
+import LoadingAnimation from "../components/common/LoadingAnimation.jsx";
 
 const CompleteProfile = () => {
     const [searchParams] = useSearchParams()
@@ -28,6 +29,7 @@ const CompleteProfile = () => {
         e.preventDefault()
         setLoading(true)
         try {
+            console.log(formData)
             await setDoc(doc(db, "users", uid), {
                 uid,
                 ...formData,
@@ -40,6 +42,17 @@ const CompleteProfile = () => {
         } finally {
             setLoading(false)
         }
+    }
+    const loadingHandler = ()=>{
+        setLoading(true);
+        setError('');
+        setTimeout(() => {
+            setLoading(false);
+        }, 2000);
+    }
+
+    if(loading){
+        return <LoadingAnimation/>
     }
 
     return (
@@ -112,6 +125,24 @@ const CompleteProfile = () => {
                         </button>
                     </div>
                 </form>
+                <div className="mt-6">
+                    <div>
+                        {
+                            formData.role === "customer" &&
+                            <>
+                            <div className="w-full border-t border-gray-300"></div>
+                            <div className="flex items-center justify-center mt-6 text-primary dark:text-white hover:underline">
+                                <button onClick={()=> {
+                                    setFormData({...formData, role:"doctor"})
+                                    loadingHandler()
+                                }}>
+                                    Sign up as a doctor.
+                                </button>
+                            </div>
+                            </>
+                        }
+                        </div>
+                </div>
             </div>
         </div>
     )

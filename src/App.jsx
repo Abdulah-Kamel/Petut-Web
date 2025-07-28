@@ -30,6 +30,7 @@ import BookingLoadingPage from "./pages/BookingLoadingPage";
 import BookingSuccessPage from "./pages/BookingSuccessPage";
 import CompleteProfile from "./pages/CompleteProfile.jsx";
 import NotificationHandler from "./components/Notification/NotificationHandler.jsx";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   const dispatch = useDispatch();
