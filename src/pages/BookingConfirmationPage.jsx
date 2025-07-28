@@ -33,24 +33,32 @@ const BookingConfirmationPage = () => {
     try {
       // Prepare user info
       const userId = currentUser?.uid || "";
-      const userName = currentUser?.displayName || currentUser?.email || "";
+      const userName =
+      currentUser?.displayName || currentUser?.email || "Unknown Customer";
+      const customerEmail = currentUser?.email || "";
+      const customerPhone = currentUser?.phoneNumber || ""; 
       // Add booking
-      const docRef = await addDoc(collection(db, "bookings"), {
-        clinicId: clinic.id,
-        clinicName: clinic.clinicName || clinic.name || clinic.doctorName,
-        clinicPhone: clinic.phone || clinic.phoneNumber,
-        clinicLocation: clinic.clinicAddress || clinic.location,
-        day: selectedDay,
-        time: selectedTime,
-        date: selectedDate,
-        price: clinic.price,
-        paymentMethod:
-          selectedPayment === "card" ? "Visa / Mastercard" : "Cash on arrival",
-        timestamp: serverTimestamp(),
-        status: "booked",
-        userId,
-        userName,
-      });
+ const docRef = await addDoc(collection(db, "bookings"), {
+   clinicId: clinic.id,
+   clinicName: clinic.clinicName || clinic.name || clinic.doctorName,
+   clinicPhone: clinic.phone || clinic.phoneNumber,
+   clinicLocation: clinic.clinicAddress || clinic.location,
+   day: selectedDay,
+   time: selectedTime,
+   date: selectedDate,
+   price: clinic.price,
+   paymentMethod:
+     selectedPayment === "card" ? "Visa / Mastercard" : "Cash on arrival",
+   timestamp: serverTimestamp(),
+   status: "booked",
+   userId,
+   userName,
+   customerPhone,
+   customerEmail,
+   doctorId: clinic.id,
+   doctorName: clinic.clinicName || clinic.name,
+ });
+
       // booking Id
       await updateDoc(doc(db, "bookings", docRef.id), { bookingId: docRef.id });
       navigate("/booking-loading", {

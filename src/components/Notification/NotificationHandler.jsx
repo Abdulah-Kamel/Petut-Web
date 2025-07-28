@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { messaging, getToken, onMessage } from "../../firebase";
 import { auth, db } from "../../firebase";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc,getDoc } from "firebase/firestore";
+
 const vapidKey =
   "BJejSjl-UmNNovakxHCiW1znkKEgMMrOyIdFDewJkEFNCaM6t4fBKYGm8Ct_fWKGVQmMDJpSp-vEtgSXVgjLMck";
 
@@ -44,11 +45,51 @@ function NotificationHandler() {
         });
     }
 
-    // استقبال الإشعارات أثناء فتح الموقع
-    onMessage(messaging, (payload) => {
+    onMessage(messaging, async (payload) => {
       console.log("📩 إشعار وصلك:", payload);
-      alert(`${payload.notification.title}: ${payload.notification.body}`);
+
+      if (Notification.permission === "granted") {
+        new Notification(payload.notification.title, {
+          body: payload.notification.body,
+        });
+      }
+
+      // حفظ الإشعار في Firestore
+      if (auth.currentUser) {
+        const uid = auth.currentUser.uid;
+        const userRef = doc(db, "users", uid);
+        const userSnap = await getDoc(userRef);
+
+        const newNotification = {
+          id: Date.now().toString(),
+          title: payload.notification.title || "",
+          body: payload.notification.body || "",
+          timestamp: Date.now(),
+          read: false,
+        };
+
+        if (userSnap.exists()) {
+          const data = userSnap.data();
+          const existingNotifications = data.notifications || [];
+
+          const updatedNotifications = [
+            newNotification,
+            ...existingNotifications,
+          ].slice(0, 20); 
+
+          await setDoc(
+            userRef,
+            {
+              notifications: updatedNotifications,
+            },
+            { merge: true }
+          );
+
+          console.log("🔔 تم حفظ الإشعار في Firestore");
+        }
+      }
     });
+
   }, []);
 
   return null;

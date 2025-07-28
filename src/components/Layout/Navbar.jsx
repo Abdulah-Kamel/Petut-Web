@@ -1,11 +1,12 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useAuth } from "../../context/AuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 import DarkModeToggle from "../DarkModeToggle";
-import {doc, getDoc, getFirestore} from "firebase/firestore";
+import NotificationBell from "../Notification/NotificationBell";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,7 +31,7 @@ const Navbar = () => {
     if (currentUser) {
       const db = getFirestore();
       // Create a reference to the user's document in the 'users' collection
-      const userDocRef = doc(db, 'users', currentUser.uid);
+      const userDocRef = doc(db, "users", currentUser.uid);
 
       try {
         const docSnap = await getDoc(userDocRef);
@@ -38,7 +39,7 @@ const Navbar = () => {
           // If the document exists, set the user data in state
           setUserData(docSnap.data());
         } else {
-          console.log('No such document in Firestore!');
+          console.log("No such document in Firestore!");
         }
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -67,84 +68,86 @@ const Navbar = () => {
             <Link to="/catalog" className="nav-link">
               Catalog
             </Link>
-            {
-              currentUser &&
-            <Link to="/favorites" className="nav-link">
-              Favorites
-            </Link>
-            }
+            {currentUser && (
+              <Link to="/favorites" className="nav-link">
+                Favorites
+              </Link>
+            )}
             <Link to="/clinics" className="nav-link">
               Health
             </Link>
-            {
-                userData?.role === "doctor" &&
-            <Link to="/dashboard" className="nav-link">
-              Dashboard
-            </Link>
-            }
+            {userData?.role === "doctor" && (
+              <Link to="/dashboard" className="nav-link">
+                Dashboard
+              </Link>
+            )}
           </div>
           {/* User Actions */}
           <div className="flex items-center space-x-4">
             <button
-                onClick={() => navigate("/cart")}
-                className="relative p-2 text-neutral dark:text-white hover:text-primary dark:hover:text-primary transition-colors"
+              onClick={() => navigate("/cart")}
+              className="relative p-2 text-neutral dark:text-white hover:text-primary dark:hover:text-primary transition-colors"
             >
               <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
                 <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                 />
               </svg>
               {totalQuantity > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-primary text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 bg-primary text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
                   {totalQuantity}
                 </span>
               )}
             </button>
-            <DarkModeToggle/>
+
+            {/* Notification Bell */}
+            <NotificationBell />
+
+            <DarkModeToggle />
 
             {currentUser ? (
-                <div className="flex items-center space-x-4">
-                  <Link to="/profile" className="nav-link">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                      <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                      />
-                    </svg>
-                  </Link>
-                  <button
-                      onClick={handleLogout}
-                      className="btn-secondary text-sm"
+              <div className="flex items-center space-x-4">
+                <Link to="/profile" className="nav-link">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
                   >
-                    Logout
-                  </button>
-                </div>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                    />
+                  </svg>
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="btn-secondary text-sm"
+                >
+                  Logout
+                </button>
+              </div>
             ) : (
-                <div className="flex items-center space-x-2">
-                  <Link to="/login" className="btn-primary text-sm">
-                    Log In
-                  </Link>
-                  <Link to="/signup" className="btn-secondary text-sm">
-                    Sign Up
-                  </Link>
-                </div>
+              <div className="flex items-center space-x-2">
+                <Link to="/login" className="btn-primary text-sm">
+                  Log In
+                </Link>
+                <Link to="/signup" className="btn-secondary text-sm">
+                  Sign Up
+                </Link>
+              </div>
             )}
           </div>
 
@@ -174,6 +177,12 @@ const Navbar = () => {
                 </span>
               )}
             </button>
+
+            {/* Mobile Notification Bell */}
+            <div className="mr-2">
+              <NotificationBell />
+            </div>
+
             <button
               onClick={toggleMenu}
               type="button"
