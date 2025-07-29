@@ -12,32 +12,29 @@ const ProfileForm = ({ currentUser }) => {
   const { authUser } = useAuth ? useAuth() : { authUser: null };
   const [fullName, setFullName] = useState(currentUser?.displayName || "");
   const [email] = useState(currentUser?.email || "");
-  const [gender,setGender] = useState(currentUser?.gender || "");
-  const [phone, setPhone] = useState("");
+  const [gender,setGender] = useState("");
+  const [phone, setPhone] = useState( "");
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordMsg, setPasswordMsg] = useState("");
   const [profileMsg, setProfileMsg] = useState("");
   const [loading, setLoading] = useState(false);
-  const [profileImage, setProfileImage] = useState(""); // base64 for preview
+  const [profileImage, setProfileImage] = useState( ""); // base64 for preview
   const [profileImageFile, setProfileImageFile] = useState(null);
-
-  // Fetch user profile from Firestore on mount
-  useEffect(() => {
-    async function fetchProfile() {
-      if (currentUser?.uid) {
-        const profile = await getUserProfile(currentUser.uid);
-        if (profile) {
-          setPhone(profile.phone || "");
-          setProfileImage(profile.profileImage || "");
-          setGender(profile.gender || "");
-        }
+  async function fetchProfile() {
+    if (currentUser?.uid) {
+      const profile = await getUserProfile(currentUser.uid);
+      if (profile) {
+        setPhone(profile.phone || "");
+        setProfileImage(profile.profileImage || "");
+        setGender(profile.gender || "");
       }
     }
+  }
+  useEffect(() => {
     fetchProfile();
-    // eslint-disable-next-line
-  }, [currentUser?.uid]);
+  }, []);
 
   // Handle image upload and convert to base64
   const handleImageChange = (e) => {
@@ -95,6 +92,7 @@ const ProfileForm = ({ currentUser }) => {
           displayName: fullName,
         });
 
+        setProfileImage(imageUrl); // Update local state with the new image URL
         setProfileMsg("Profile updated successfully!");
         setProfileImageFile(null); // Reset file input
       }
