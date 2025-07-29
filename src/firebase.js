@@ -80,7 +80,8 @@ export async function getUserProfile(uid) {
   return userSnap.exists() ? userSnap.data() : null;
 }
 
-export async function setUserProfile(uid, profileData) {
-  const userRef = doc(db, "users", uid);
-  await setDoc(userRef, profileData, { merge: true });
-}
+export const setUserProfile = async (uid, data) => {
+  const userDocRef = doc(db, "users", uid);
+  // Use { merge: true } to update fields without overwriting the entire document
+  await setDoc(userDocRef, data, { merge: true });
+};

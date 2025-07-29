@@ -118,7 +118,16 @@ const SignupPage = () => {
         // You can add a timestamp or other fields here
       });
 
-      navigate("/");
+      console.log(formData.role);
+      if (formData.role === "doctor") {
+        // Redirect to completion form
+        navigate(`/complete-profile?uid=${user.uid}&role=${formData.role}`);
+        console.log("doctor")
+      } else {
+        navigate("/");
+        console.log("customer")
+      }
+
       console.log(formData);
     } catch (err) {
       switch (err.code) {
@@ -163,7 +172,7 @@ const SignupPage = () => {
 
       if (!userDocSnap.exists()) {
         // Redirect to completion form
-        navigate(`/complete-profile?uid=${user.uid}`);
+        navigate(`/complete-profile?uid=${user.uid}&role=${formData.role}`);
       } else {
         navigate("/");
       }
